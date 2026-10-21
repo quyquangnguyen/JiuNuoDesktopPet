@@ -1,25 +1,25 @@
-# 素材来源与权利
+# Asset sources and rights
 
-核对日期：2026-10-01。本文件是角色、图片、音频及序列帧权利状态的正式记录。代码许可见 [LICENSE](LICENSE) 与 [NOTICE](NOTICE)，不自动覆盖这些素材。
+Review date: 2026-10-01. This file is the official record of the rights status of characters, images, audio and sprite frames. The code license is in [LICENSE](LICENSE) and [NOTICE](NOTICE) and does not automatically cover these assets.
 
-| 内容 | 来源或制作贡献 | 当前授权状态 |
+| Content | Source or production contribution | Current license status |
 | --- | --- | --- |
-| 《鸣潮》角色、名称与原始形象 | 库洛游戏及相应权利人；本项目为同人桌宠 | 尚未确认覆盖软件及随源码再分发的许可 |
-| 弗糯糯形象 | 项目维护者确认来自画师赤鬼（akaoni） | 尚未提供允许改编、用于软件并随源码再分发的授权依据 |
-| 菲比啾比形象参考 | 网络资料将早期菲比表情包追溯至 Binci，并提到 miratsu 初音表情包的影响；见下方溯源 | 尚不能确认本项目原图的具体绘制者和完整来源链，不能将网络流传当作许可 |
-| 角色序列帧、音频 | 项目维护者确认由自己制作；已有生成及处理记录按项目约定保留 | 制作贡献不替代上游角色与参考图许可；若涉及第三方声音、采样或生成服务，还需核对相应使用条件 |
-| 图标、角色源图、衍生裁切和其他视觉资源 | 位于 `assets/`，包含上述角色的衍生内容 | 与所依赖的角色及参考素材一并核对，不单独推定为可自由使用 |
+| *Wuthering Waves* characters, names and original designs | Kuro Games and the respective rights holders; this project is a fan-made desktop pet | No license yet confirmed that covers software or redistribution with the source code |
+| Fu Nuonuo design | The project maintainer confirms it comes from the artist akaoni | No basis yet provided for a license that permits adaptation, use in software and redistribution with the source code |
+| Feibi Jiubi design reference | Online sources trace the early Feibi sticker images to Binci and mention the influence of miratsu's Hatsune Miku stickers; see the provenance section below | The specific artist and full source chain of this project's original image cannot yet be confirmed; circulation online cannot be treated as a license |
+| Character sprite frames, audio | The project maintainer confirms they made these themselves; existing generation and processing records are kept as agreed in the project | Production contributions do not replace licenses for the upstream characters and reference images; if third-party voices, samples or generation services are involved, their terms of use must also be checked |
+| Icons, character source images, derived crops and other visual resources | Located in `assets/`, including derivative content of the characters above | Reviewed together with the characters and reference assets they depend on; not presumed free to use on their own |
 
-## 菲比形象溯源
+## Feibi design provenance
 
-[萌娘百科镜像的菲比条目](https://moegirl.uk/%E8%8F%B2%E6%AF%94)将表情包源头记为 Binci 于 2024-11-23 发布的作品，并列出[原帖链接](https://arca.live/b/breaking/122003526)。原帖在本次核对中无法打开，因此这是一条有明确指向的二手线索，尚未核验原帖许可。条目另提及 miratsu 的初音未来表情包；这不能证明 miratsu 或 Binci 绘制了本仓库 `assets/characters/feibijiubi/original.png`，也不能证明其中任何人授权了该文件的再分发。
+[The Feibi entry on a Moegirlpedia mirror](https://moegirl.uk/%E8%8F%B2%E6%AF%94) records the origin of the sticker images as a work published by Binci on 2024-11-23 and lists the [original post link](https://arca.live/b/breaking/122003526). The original post could not be opened during this review, so this is a clearly pointed second-hand lead, and the original post's license has not been verified. The entry also mentions miratsu's Hatsune Miku stickers; this does not prove that miratsu or Binci drew this repository's `assets/characters/feibijiubi/original.png`, nor that any of them licensed redistribution of that file.
 
-弗糯糯的画师归属来自维护者确认。后续应补充作者原始发布链接以及覆盖实际使用方式的许可依据；只记录可公开的链接、条款与确认日期，私人沟通和个人信息不进入仓库。
+The artist attribution of Fu Nuonuo comes from the maintainer's confirmation. The author's original publication link and a license basis covering the actual usage should be added later; record only links, terms and confirmation dates that can be made public, and keep private communications and personal information out of the repository.
 
-## 当前使用边界
+## Current usage boundaries
 
-维护者要求本项目及其拥有权利的素材不用于商业用途。当前素材没有另行授予公众复制、修改或再分发的许可；也不套用 CC、MIT 或代码许可证。获得完整权利依据后再明确可授予的素材许可范围。
+The maintainer requires that this project and the assets it holds rights to are not used commercially. The current assets have not been separately licensed to the public for copying, modification or redistribution, and no CC, MIT or code license is applied to them. The scope of any asset license that can be granted will be stated once complete rights documentation is obtained.
 
-检索到的[《鸣潮》官方英文二创指引](https://wutheringwaves.kurogames.com/p/en/produce.html)在适用范围中排除了游戏、软件等类别。因此，不能仅凭该页面和非商业性质认定桌宠软件已获许可；适用地区及具体使用方式仍需向相关权利人核实。
+The [official *Wuthering Waves* English fan-creation guidelines](https://wutheringwaves.kurogames.com/p/en/produce.html) that were found exclude games, software and similar categories from their scope. Therefore the desktop-pet software cannot be considered licensed based on that page and its noncommercial nature alone; the applicable regions and specific uses still need to be verified with the relevant rights holders.
 
-维护者于 2026-10-01 决定公开包含角色素材的源码与安装包。该发布决定不改变上表仍待确认的权利状态，也不等于获得库洛或画师授权。技术、隐私与发布记录集中维护于 [发布记录](docs/RELEASE_READINESS.md)。
+On 2026-10-01 the maintainer decided to publish the source code and installation package including the character assets. That publication decision does not change the rights status still to be confirmed in the table above, and does not amount to authorization from Kuro Games or the artists. Technical, privacy and release records are maintained centrally in the [release record](docs/RELEASE_READINESS.md).

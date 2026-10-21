@@ -180,17 +180,17 @@ def main() -> None:
 
     results = [audit_action(args.runtime_root, args.preview_root, action) for action in args.actions]
     labels = {
-        "walk": "慢走",
-        "fall": "坠落",
-        "land": "Q弹着陆",
-        "curious": "好奇探索",
-        "sleep": "软糯睡眠",
-        "hungry": "饥饿讨食",
-        "climb": "攀爬窗沿",
-        "roll": "饥饿打滚",
-        "drag": "拖拽悬空",
-        "jump": "窗口跳跃",
-        "slide": "窗边下滑",
+        "walk": "Slow walk",
+        "fall": "Fall",
+        "land": "Bouncy landing",
+        "curious": "Curious exploring",
+        "sleep": "Soft, squishy sleep",
+        "hungry": "Hungry, begging for food",
+        "climb": "Climbing a window edge",
+        "roll": "Hungry roll",
+        "drag": "Dangling while dragged",
+        "jump": "Window jump",
+        "slide": "Sliding down a window side",
     }
     tile_size = 512
     label_height = 42

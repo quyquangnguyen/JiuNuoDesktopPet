@@ -276,6 +276,7 @@ static void QqRecordingOverlaysAreExcludedFromTerrain()
             WindowTerrainEligibilityPolicy.WsExLayered | WindowTerrainEligibilityPolicy.WsExTopmost,
             style: 0),
         "An untitled layered QQ recording overlay must not become a moving platform.");
+    // The Chinese window titles in these checks are intentional: they are what Chinese-locale Windows shows.
     Assert(WindowTerrainEligibilityPolicy.ShouldIgnoreOverlay(
             "QQScreenCaptureWnd",
             "QQ屏幕录制",
@@ -294,7 +295,7 @@ static void QqRecordingOverlaysAreExcludedFromTerrain()
             style: 0),
         "A borderless layered capture layer should not block a visible target.");
     Assert(!WindowTerrainEligibilityPolicy.IsLikelyCaptureOverlay(
-            "Chrome_WidgetWin_1", "普通窗口",
+            "Chrome_WidgetWin_1", "Ordinary window",
             extendedStyle: 0, WindowTerrainEligibilityPolicy.WsCaption),
         "An ordinary titled window must remain a real occluder.");
     Assert(WindowTerrainEligibilityPolicy.IsLikelyCaptureOverlay(
@@ -323,6 +324,7 @@ static void OrdinaryQqWindowsRemainValidTerrain()
             extendedStyle: 0x100,
             WindowTerrainEligibilityPolicy.WsCaption),
         "Ordinary Chromium application windows must remain physical terrain.");
+    // A localized (Chinese) page title containing the Chinese "screen recording" keyword; kept as real-world test data.
     Assert(!WindowTerrainEligibilityPolicy.ShouldIgnoreOverlay(
             "Chrome_WidgetWin_1",
             "如何使用 QQ 录屏 - 浏览器",
@@ -455,7 +457,7 @@ static void StartupRegistrationSelectsPortableLauncher()
     var root = Path.Combine(Path.GetTempPath(), $"SoftMochiPet-startup-{Guid.NewGuid():N}");
     var programDirectory = Path.Combine(root, "app");
     var launcher = Path.Combine(root, "JiuNuoDesktopPet.exe");
-    var legacyLauncher = Path.Combine(root, "糯糯桌宠.exe");
+    var legacyLauncher = Path.Combine(root, "NuonuoDesktopPet.exe");
     var fallback = Path.Combine(programDirectory, "internal.exe");
     try
     {
@@ -1353,7 +1355,7 @@ static void DialogueCatalogStaysVariedAndAvoidsImmediateRepeats()
         var lines = PetDialogueCatalog.GetLines(cue);
         Assert(lines.Count >= 4, $"Every situation needs several characterful alternatives: {cue}.");
         Assert(lines.All(line => !string.IsNullOrWhiteSpace(line)), $"Dialogue cannot be blank: {cue}.");
-        Assert(lines.All(line => line.Length <= 14), $"Dialogue should stay short and instinctive: {cue}.");
+        Assert(lines.All(line => line.Length <= 28), $"Dialogue should stay short and instinctive: {cue}.");
     }
 
     var selector = new PetDialogueSelector(new Random(20260819));
@@ -1362,7 +1364,7 @@ static void DialogueCatalogStaysVariedAndAvoidsImmediateRepeats()
         string? previous = null;
         for (var index = 0; index < 20; index++)
         {
-            var current = selector.Choose(cue, "测试文件");
+            var current = selector.Choose(cue, "test file");
             Assert(current != previous, $"The same situation repeated the same line twice: {cue}.");
             Assert(!current.Contains("{item}", StringComparison.Ordinal),
                 $"Dialogue template was not resolved: {cue}.");
@@ -1370,8 +1372,8 @@ static void DialogueCatalogStaysVariedAndAvoidsImmediateRepeats()
         }
     }
 
-    var namedLine = selector.Choose(DialogueCue.TastedItem, "小点心.txt");
-    Assert(namedLine.Contains("小点心.txt", StringComparison.Ordinal),
+    var namedLine = selector.Choose(DialogueCue.TastedItem, "little-treat.txt");
+    Assert(namedLine.Contains("little-treat.txt", StringComparison.Ordinal),
         "Meal dialogue should keep the real item name inside a short reaction.");
 }
 

@@ -1,6 +1,6 @@
 Use case: logo-brand
 Asset type: master artwork for a Windows desktop app icon and notification-area tray icon
-Primary request: create a compact, immediately recognizable icon portrait of the exact same chibi girl from the original reference image, known as 糯糯
+Primary request: create a compact, immediately recognizable icon portrait of the exact same chibi girl from the original reference image, known as Nuonuo
 Input image: the original character image is the strict identity, face, hair, eye-color, costume, and line-art reference; never use a generated sprite sheet as input
 Scene/backdrop: genuinely transparent background with clean alpha; no square tile or colored plate
 Subject: centered close-up of her oversized rounded head plus enough upper chest to show the large red bow; fluffy gray-blue hair; pale warm face; both half-lidded eyes retain the solid pink-to-pale-blue filled gradient; tiny soft content smile

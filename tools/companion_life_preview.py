@@ -13,8 +13,8 @@ SMALL = ImageFont.truetype("C:/Windows/Fonts/msyh.ttc", 15)
 CACHE = {}
 RUNTIME = {"n": ROOT / "assets/sprites/runtime",
            "f": ROOT / "assets/characters/feibijiubi/runtime"}
-LABELS = {"follow": "小跟屁虫", "nuzzle": "路过蹭一下",
-          "ball": "一起玩小球", "watch": "一起看热闹"}
+LABELS = {"follow": "Little tagalong", "nuzzle": "Nuzzle in passing",
+          "ball": "Play ball together", "watch": "Watch the fun together"}
 
 
 def ease(t):
@@ -38,7 +38,7 @@ def base(kind, t):
     d = ImageDraw.Draw(im)
     d.rounded_rectangle((24, 18, W-24, 84), radius=16, fill="white", outline="#e4d7cc", width=2)
     d.text((42, 30), LABELS[kind], font=FONT, fill="#5b4d57")
-    d.text((270, 37), f"运行素材离屏预览 · 无声 · {t:.1f}s", font=SMALL, fill="#8d7a83")
+    d.text((270, 37), f"Off-screen preview of runtime assets · silent · {t:.1f}s", font=SMALL, fill="#8d7a83")
     d.rectangle((0, GROUND, W, H), fill="#e7dbce")
     return im
 
@@ -81,7 +81,7 @@ def frame(kind, t, trace=None):
     else:
         d=ImageDraw.Draw(im)
         d.rounded_rectangle((750,140,1020,240),radius=10, fill="#e1eff9",outline="#a6bcd0",width=2)
-        d.text((782,171),"附近出现了新窗口",font=SMALL,fill="#56748e")
+        d.text((782,171),"A new window appeared nearby",font=SMALL,fill="#56748e")
         pet(im,"n","pair_notice",int(max(0,t-.55)/.18),405)
         pet(im,"f","pair_notice",int(t/.18),620,True)
     return im.convert("RGB")

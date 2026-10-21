@@ -7,14 +7,14 @@
 #endif
 
 #if defined(BEHAVIOR_CONTROL_LAUNCHER)
-#define LAUNCHER_TITLE L"啾糯桌宠 · 行为控制版"
-#define LAUNCHER_LAYOUT_HELP L"请确认“app”文件夹与这个行为控制版 EXE 放在一起，且文件夹内容完整。"
+#define LAUNCHER_TITLE L"JiuNuo Desktop Pet · Behavior Control Edition"
+#define LAUNCHER_LAYOUT_HELP L"Make sure the \"app\" folder is next to this Behavior Control Edition EXE and that its contents are complete."
 #elif defined(FEATURE_TEST_LAUNCHER)
-#define LAUNCHER_TITLE L"啾糯桌宠 · 菲比啾比专属功能测试"
-#define LAUNCHER_LAYOUT_HELP L"请把这个 EXE 留在“test-tools”文件夹中，并保留同一免安装目录下的“app”文件夹。"
+#define LAUNCHER_TITLE L"JiuNuo Desktop Pet · Feibi Jiubi Exclusive Feature Test"
+#define LAUNCHER_LAYOUT_HELP L"Keep this EXE in the \"test-tools\" folder, and keep the \"app\" folder in the same portable folder."
 #else
-#define LAUNCHER_TITLE L"啾糯桌宠"
-#define LAUNCHER_LAYOUT_HELP L"请确认“app”文件夹与这个 EXE 放在一起，且文件夹内容完整。"
+#define LAUNCHER_TITLE L"JiuNuo Desktop Pet"
+#define LAUNCHER_LAYOUT_HELP L"Make sure the \"app\" folder is next to this EXE and that its contents are complete."
 #endif
 
 static int ShowLaunchError(DWORD errorCode)
@@ -34,10 +34,10 @@ static int ShowLaunchError(DWORD errorCode)
     StringCchPrintfW(
         message,
         ARRAYSIZE(message),
-        L"无法启动%s。\n\n%s\n\n系统信息：%s",
+        L"Could not start %s.\n\n%s\n\nSystem message: %s",
         LAUNCHER_TITLE,
         LAUNCHER_LAYOUT_HELP,
-        systemMessage[0] == L'\0' ? L"未知错误" : systemMessage);
+        systemMessage[0] == L'\0' ? L"Unknown error" : systemMessage);
 
     MessageBoxW(NULL, message, LAUNCHER_TITLE, MB_OK | MB_ICONERROR);
     return 1;

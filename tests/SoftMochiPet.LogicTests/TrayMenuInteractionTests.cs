@@ -81,8 +81,8 @@ internal static class TrayMenuInteractionTests
         using var menu = CreateMenu();
         var events = new List<bool>();
         Observe(menu, events.Add);
-        var characters = new Forms.ToolStripMenuItem("角色");
-        characters.DropDownItems.Add("测试角色");
+        var characters = new Forms.ToolStripMenuItem("Character");
+        characters.DropDownItems.Add("Test character");
         menu.Items.Add(characters);
         Lifecycle(menu, "OnOpening", new CancelEventArgs());
         Lifecycle(menu, "OnOpened", EventArgs.Empty);
@@ -104,7 +104,7 @@ internal static class TrayMenuInteractionTests
     private static Forms.ContextMenuStrip CreateMenu()
     {
         var menu = (Forms.ContextMenuStrip)Activator.CreateInstance(MenuType, nonPublic: true)!;
-        menu.Items.Add("测试项");
+        menu.Items.Add("Test item");
         return menu;
     }
     private static bool IsOpen(Forms.ContextMenuStrip menu) => (bool)MenuType.GetProperty("IsInteractionOpen")!.GetValue(menu)!;

@@ -56,8 +56,8 @@ internal static class FeatureTestTargetTests
             Assert(!FeatureTestTargetLaunchPolicy.IsValidBounds(bounds),
                 "Invalid sizes and overflowing native bounds must be rejected before any window mutation.");
         Assert(FeatureTestTargetLaunchPolicy.StepTitle(null) == FeatureTestTargetWindow.WindowTitle &&
-            FeatureTestTargetLaunchPolicy.StepTitle("\r\n踢一下\0").EndsWith(" · 踢一下", StringComparison.Ordinal) &&
-            FeatureTestTargetLaunchPolicy.StepTitle(new string('测', 200)).Length <=
+            FeatureTestTargetLaunchPolicy.StepTitle("\r\nKick once\0").EndsWith(" · Kick once", StringComparison.Ordinal) &&
+            FeatureTestTargetLaunchPolicy.StepTitle(new string('T', 200)).Length <=
                 FeatureTestTargetWindow.WindowTitle.Length + 3 + 80,
             "Step labels must keep the dedicated-window identity and omit unbounded or control-character text.");
     }

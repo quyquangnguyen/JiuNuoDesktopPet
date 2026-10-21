@@ -24,39 +24,39 @@ public static class FeatureDemoPlan
     public const double RestoreTimeoutSeconds = 20;
     public static IReadOnlyList<FeatureDemoStep> Steps { get; } = Array.AsReadOnly(new[]
     {
-        new FeatureDemoStep(FeatureDemoAction.Kick, "踢开测试窗口", 20),
-        new FeatureDemoStep(FeatureDemoAction.Punch, "一拳打飞测试窗口", 20),
-        new FeatureDemoStep(FeatureDemoAction.Charge, "冲过去撞一撞", 20),
-        new FeatureDemoStep(FeatureDemoAction.HatStoreReturn, "藏好窗口，等待右键归还", 40),
-        new FeatureDemoStep(FeatureDemoAction.Tease, "逗逗她，捣蛋条涨起来", 10),
-        new FeatureDemoStep(FeatureDemoAction.Shatter, "踢碎并收进帽子，等待右键恢复", 60),
-        new FeatureDemoStep(FeatureDemoAction.Tear, "撕开并收进帽子，等待右键恢复", 60),
-        new FeatureDemoStep(FeatureDemoAction.HatlessInterruption, "无帽中断并捡帽，等待右键恢复", 60),
+        new FeatureDemoStep(FeatureDemoAction.Kick, "Kick the test window away", 20),
+        new FeatureDemoStep(FeatureDemoAction.Punch, "Punch the test window flying", 20),
+        new FeatureDemoStep(FeatureDemoAction.Charge, "Charge over and ram it", 20),
+        new FeatureDemoStep(FeatureDemoAction.HatStoreReturn, "Hide the window; wait for a right-click return", 40),
+        new FeatureDemoStep(FeatureDemoAction.Tease, "Tease her so the mischief bar fills up", 10),
+        new FeatureDemoStep(FeatureDemoAction.Shatter, "Shatter it into the hat; wait for a right-click restore", 60),
+        new FeatureDemoStep(FeatureDemoAction.Tear, "Tear it into the hat; wait for a right-click restore", 60),
+        new FeatureDemoStep(FeatureDemoAction.HatlessInterruption, "Hatless interruption and hat pickup; wait for a right-click restore", 60),
     });
 
     public static IReadOnlyList<FeatureDemoManualCheck> ManualChecks { get; } = Array.AsReadOnly(new[]
     {
-        new FeatureDemoManualCheck("PrankAppearance", "观察撕片边缘完整、碎片收进帽口、右键出帽后聚合归位"),
-        new FeatureDemoManualCheck("PrankTakeover", "收纳后桌面无残留碎片，窗口持续收起，右键恢复；用户接管时停止控制"),
-        new FeatureDemoManualCheck("PrankVoice", "专属语音、禁音即停与连续动作不叠音"),
+        new FeatureDemoManualCheck("PrankAppearance", "Check that torn edges are intact, shards go into the hat opening, and pieces reassemble after the right-click hat release"),
+        new FeatureDemoManualCheck("PrankTakeover", "After stashing, no shards remain on the desktop, the window stays hidden until right-click restore, and control stops when the user takes over"),
+        new FeatureDemoManualCheck("PrankVoice", "Character-specific voice lines, instant stop on mute, and no overlapping voices across consecutive actions"),
     });
 
     public static string FailureHint(string reason) => reason switch
     {
-        "foreground_window" => "测试窗口正在前台：点桌面空白，再右键重试本项",
-        "occluded" or "window_occluded" => "测试窗口被遮挡：移开遮挡后右键重试本项",
-        "elevated_process" => "请退出以管理员身份运行的桌宠，使用普通启动",
-        "test_window_closed" => "测试窗口已关闭，右键重试本项会重新创建",
-        "step_timeout" => "此项未按时完成，请查看报告后重试本项",
-        "unexpected_restore_before_manual_request" => "未收到右键请求就结束了窗口持有，请查看报告后重试",
-        "manual_restore_identity_mismatch" => "恢复请求与当前测试窗口不符，请查看报告后重试",
-        _ => $"此项已暂停（{reason}），可右键重试本项",
+        "foreground_window" => "The test window is in the foreground: click an empty spot on the desktop, then right-click Retry This Step",
+        "occluded" or "window_occluded" => "The test window is covered: move the covering window away, then right-click Retry This Step",
+        "elevated_process" => "Exit the pet that is running as administrator and start it normally",
+        "test_window_closed" => "The test window was closed; right-click Retry This Step to create it again",
+        "step_timeout" => "This step did not finish in time; check the report, then Retry This Step",
+        "unexpected_restore_before_manual_request" => "The window hold ended before any right-click request; check the report, then retry",
+        "manual_restore_identity_mismatch" => "The restore request does not match the current test window; check the report, then retry",
+        _ => $"This step is paused ({reason}); right-click Retry This Step",
     };
 
     public static string ManualRestoreHint(double elapsedSeconds)
     {
         var elapsed = double.IsFinite(elapsedSeconds) ? Math.Max(0, Math.Floor(elapsedSeconds)) : 0;
-        return $"等待右键恢复（已等待 {elapsed:0} 秒）";
+        return $"Waiting for a right-click restore (waited {elapsed:0}s)";
     }
 
     public static string ConfirmedStepResult(FeatureDemoAction action, bool hatlessInterruptionObserved,

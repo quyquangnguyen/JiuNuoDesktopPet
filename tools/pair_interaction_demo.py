@@ -64,9 +64,9 @@ def food(image, name, x, y, scale):
 
 def scene_frame(kind, t, treat="cake"):
     labels = {
-        "cheek": ("菲比啾比揪糯糯的脸", "靠近 → 轻揪 → Q弹回弹", 2.7, .145, 205),
-        "sleep": ("两个人靠在一起睡觉", "打哈欠 → 挨近 → 靠着呼呼睡", 8.2, .165, 180),
-        "feed": ("摘帽抛食，糯糯张嘴接住", f"远距离抛物线 · 本次食物：{treat}", 6.4, .175, 420),
+        "cheek": ("Feibi Jiubi pinches Nuonuo's cheeks", "approach → gentle pinch → bouncy rebound", 2.7, .145, 205),
+        "sleep": ("Sleeping snuggled together", "yawn → scoot closer → doze leaning together", 8.2, .165, 180),
+        "feed": ("Hat off, treat tossed, Nuonuo catches it", f"long-range arc · this treat: {treat}", 6.4, .175, 420),
     }
     title, subtitle, duration, seconds, gap = labels[kind]
     image = base(title, subtitle)

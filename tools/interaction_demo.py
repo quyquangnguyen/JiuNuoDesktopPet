@@ -92,7 +92,7 @@ def food_card(canvas: Image.Image, x: float, y: float, scale: float):
 
 
 def scene_meet(frame: int) -> Image.Image:
-    image = background("① 碰面问候", "菲比啾比先发现糯糯，靠近后轻轻打招呼", frame)
+    image = background("① Meet and greet", "Feibi Jiubi spots Nuonuo first, comes closer and says a soft hello", frame)
     progress = ease((frame - 4) / 52)
     feibi_x = 870 - 265 * progress
     nuonuo_x = 430 + 18 * ease((frame - 56) / 20)
@@ -110,7 +110,7 @@ def scene_meet(frame: int) -> Image.Image:
 
 
 def scene_food(frame: int) -> Image.Image:
-    image = background("⑤ 进食围观", "糯糯安心吃东西，菲比啾比在旁边好奇地围观", frame)
+    image = background("⑤ Watching her eat", "Nuonuo eats happily while Feibi Jiubi watches curiously beside her", frame)
     local = frame - 90
     nuonuo_x = 490 + 5 * math.sin(local * .08)
     feibi_x = 820 + 5 * math.sin(local * .11 + 1.0)

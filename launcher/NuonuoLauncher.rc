@@ -2,13 +2,13 @@
 #include <windows.h>
 
 #if defined(BEHAVIOR_CONTROL_LAUNCHER)
-#define LAUNCHER_DESCRIPTION "啾糯桌宠 · 行为控制版\0"
+#define LAUNCHER_DESCRIPTION "JiuNuo Desktop Pet · Behavior Control Edition\0"
 #define LAUNCHER_FILENAME "JiuNuoDesktopPet-BehaviorControl.exe\0"
 #elif defined(FEATURE_TEST_LAUNCHER)
-#define LAUNCHER_DESCRIPTION "啾糯桌宠 · 菲比啾比专属功能测试\0"
+#define LAUNCHER_DESCRIPTION "JiuNuo Desktop Pet · Feibi Jiubi Exclusive Feature Test\0"
 #define LAUNCHER_FILENAME "FeibiJiubi-FeatureTest.exe\0"
 #else
-#define LAUNCHER_DESCRIPTION "啾糯桌宠启动器\0"
+#define LAUNCHER_DESCRIPTION "JiuNuo Desktop Pet Launcher\0"
 #define LAUNCHER_FILENAME "JiuNuoDesktopPet.exe\0"
 #endif
 

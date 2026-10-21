@@ -1,105 +1,105 @@
-# 菲比啾比：窗口捣蛋总方案
+# Feibi Jiubi: overall window mischief plan
 
-状态：用户已确认的设计与验收依据，包含 2026-09-08 的默认开启、行为节奏和单槽存货调整。当前实施、用户验收及打包进度统一见 [角色说明](CHARACTERS.md#当前进度与阶段退出条件)；参数、设置升级、攻击节奏与满槽开场语音均以该文档为准。代理不自动启动桌宠或声音；以下设计描述不能当作画面验收通过。
+Status: the design and acceptance basis confirmed by the user, including the 2026-09-08 adjustments for on-by-default, behavior rhythm and the single-slot stash. Current implementation, user acceptance and packaging progress are documented in one place in [Characters](CHARACTERS.md#current-progress-and-phase-exit-criteria); parameters, settings upgrades, attack rhythm and the full-bar opening voice line all follow that document. The agent never starts the desktop pet or sound automatically; the design descriptions below must not be taken as a passed visual acceptance.
 
-## 目标与明确边界
+## Goals and explicit boundaries
 
-菲比不吃或舔图标，没有饥饿条，也不以饥饿决定行为；糯糯不受影响。保留拖拽、抛落、窗口平台、多显示器适配、睡眠、探索、静音与独立存档。菲比的角色菜单不展示无意义的禁食选项。按用户追加要求，头顶改为菲比独有的捣蛋条，满值后扔帽并表演踢碎或撕裂窗口。
+Feibi does not eat or lick icons, has no hunger bar, and does not decide her behavior by hunger; Nuonuo is unaffected. Dragging, tossing and falling, window platforms, multi-monitor support, sleeping, exploring, mute and separate save data are kept. Feibi's character menu does not show the meaningless Fasting Mode option. At the user's additional request, the bar above her head becomes Feibi's own mischief bar, and at full value she throws her hat and performs shattering or tearing a window.
 
-头顶对话气泡是两角色共享的可选功能，默认关闭；捣蛋阶段、测试提示与条值不另设悬浮文字。两角色各自语音、饥饿条或捣蛋条和菜单保留，气泡细节见 [双宠互动](INTERACTION_PLAN.md#头顶对话气泡)。
+Speech bubbles above the head are an optional feature shared by both characters, off by default; mischief phases, test hints and bar values get no separate floating text. Each character's own voice lines, hunger bar or mischief bar and menu are kept; for bubble details see [Two-pet interactions](INTERACTION_PLAN.md#speech-bubbles-above-the-head).
 
-她把窗口当成可以踢动、拍动和收藏的实物。动作效果是已采用目标，时长和频率可在保持目标的前提下按原生帧预览及用户实测调校。
+She treats windows as physical objects she can kick, smack and collect. The action effects are adopted goals; durations and frequencies can be tuned based on native-frame previews and the user's hands-on tests as long as the goals are kept.
 
-## 捣蛋条与行为节奏
+## Mischief bar and behavior rhythm
 
-捣蛋条表示“越来越想捣蛋”，不是饥饿或生气。建议采用短而圆润的蓝紫色条，不常驻大数字；接近满值时轻微弹动与帽沿抖动，不使用频闪。通过动作和已有专属录音表达情绪，不弹文字气泡或播报数值。
+The mischief bar means "wanting to make mischief more and more", not hunger or anger. A short, rounded blue-purple bar is suggested, with no permanently displayed large number; near full it bounces slightly and the hat brim trembles, without flashing. Emotion is expressed through actions and the existing dedicated recordings, without popping up text bubbles or announcing values.
 
-- 0–59：正常活泼生活，偶尔轻踢、拳击窗口。
-- 60–99：增加偷看、搓手和准备捣蛋的表情，冲撞或帽子收藏概率略升，不持续打扰窗口。
-- 100：只产生一个大捣蛋意图，找到合适目标且帽子空闲后开始完整表演；不能每帧重触发。帽子占用时保持满条等待，仍可踢、打、撞其他窗口，不自动归还存货。
-- 有效活跃时间加条，普通小捣蛋不扣条，用户主动逗她可加快。具体加条、普通间隔、大招冷却与无目标重试统一见[自主捣蛋默认值与节奏](CHARACTERS.md#自主捣蛋默认值与节奏)，不在本方案维护另一组候选数值。
-- 完成大招后清零并冷却；无合适窗口时保持当前条值并有界等待重试，不扩大目标范围。真正被打断与没有目标分别处理，不把无目标当成消耗满条。
-- 安静模式、睡眠、锁屏和离线期间不积攒爆发事件；关闭自主捣蛋后也不在后台排队。手动触发供用户主动体验，不强制用户反复拖甩角色来攒条。
+- 0–59: normal lively life, with occasional light kicks or punches at windows.
+- 60–99: more peeking, hand-rubbing and getting-ready-for-mischief expressions; charging or hat-collecting become slightly more likely, without constantly bothering windows.
+- 100: only one big-mischief intent is produced; the full performance starts once a suitable target is found and the hat is free; it must not re-trigger every frame. While the hat is occupied, the bar stays full and waits; she can still kick, punch and charge other windows, and the stash is not returned automatically.
+- The bar fills during effective active time, ordinary small mischief does not reduce it, and the user teasing her speeds it up. The specific fill rate, ordinary intervals, special-move cooldown and no-target retry are documented in one place in [Autonomous mischief defaults and rhythm](CHARACTERS.md#autonomous-mischief-defaults-and-rhythm); this plan does not maintain a second set of candidate values.
+- After a special move, the bar resets to zero and cools down; when there is no suitable window, the current bar value is kept and she waits with a bounded retry, without widening the target range. Being genuinely interrupted and having no target are handled separately; having no target is not treated as using up a full bar.
+- Quiet Mode, sleep, screen lock and offline periods do not accumulate burst events; after autonomous mischief is turned off, nothing is queued in the background either. Manual triggering is for the user to try it out actively, without forcing the user to repeatedly drag and fling the character to fill the bar.
 
-## 动作表现
+## Action presentation
 
-| 行为 | 表演与结果 |
+| Behavior | Performance and result |
 | --- | --- |
-| 踢窗 | 贴近侧边，收腿蓄力，脚尖接触后短暂停住，窗口突然加速、滑行减速；播放原踢击的收腿站稳后结束，不附加下蹲或伸手。 |
-| 拳击 | 握拳后拉、快速出拳，命中短停后窗口短促移开；播放原拳击的收手后结束。与踢击使用不同的蓄力姿势和冲量曲线。 |
-| 冲撞 | 先向后压势，再快速向窗沿撞肩，命中短停、窗口移动更远，角色只做一次有界回弹；不再接坐地或伸手动作。 |
-| 帽子收藏 | 偷看左右，摘帽并把开口朝上端在身前；真实窗口画面缩成小卡片，沿弧线落入帽口，被前帽沿逐渐挡住。戴好帽子后恢复日常活动，窗口保持收起，不计时取出。 |
-| 归还 | 用户右键选择“把窗口还回来”后，摘帽取出同一窗口卡片并展开，接回真实窗口，配合已有专属语音；点击帽子不触发归还。 |
+| Kick the window | Gets close to the side, pulls her leg back to wind up, pauses briefly when her toes make contact, and the window suddenly speeds up, then slides and slows down; it ends after the original kick's leg recovery and steadying, with no extra crouch or reaching. |
+| Punch | Pulls her fist back, punches quickly, and after a hit-stop the window moves away briefly; it ends after the original punch's arm recovery. It uses a different wind-up pose and impulse curve from the kick. |
+| Charge | First leans back to build momentum, then quickly rams her shoulder into the window edge; after a hit-stop the window moves farther, and the character makes only one bounded rebound, no longer followed by sitting down or reaching. |
+| Hat stash | Peeks left and right, takes off her hat and holds it in front of her with the opening up; the real window image shrinks into a small card, falls along an arc into the hat opening and is gradually hidden by the front hat brim. After putting her hat back on she returns to daily activity; the window stays hidden and is not taken out on a timer. |
+| Return | After the user chooses "Give the Windows Back" from the right-click menu, she takes off her hat, takes out the same window card and unfolds it, handing back the real window, with the existing dedicated voice lines; clicking the hat does not trigger a return. |
 
-大窗口表现得更重，位移更短；真实窗口只平移，不频繁改变大小。撞击停顿只作用于角色和特效时间线，不能阻塞系统或桌宠主线程。脚、拳、肩实际接触窗沿才施加冲量，不以角色跑到大概位置就开始移动。
+Big windows feel heavier and move a shorter distance; real windows are only translated, without frequent resizing. The impact pause only affects the character's and the effects' timeline and must never block the system or the desktop pet's main thread. The impulse is only applied when a foot, fist or shoulder actually touches the window edge, not as soon as the character runs to roughly the right spot.
 
-已采用的播放节奏与收尾帧图证据统一维护在[角色说明的攻击节奏](CHARACTERS.md#已采用的攻击节奏)。只重定时现有 16 张原生帧，命中仍在第 8 帧，不重新生成或编辑素材。普通攻击取消 `recoil → gloat` 附加收尾；动作自身必要的收手、收腿和站稳继续保留。
+The adopted playback rhythm and the frame evidence for the endings are maintained in one place in [the attack rhythm in Characters](CHARACTERS.md#adopted-attack-rhythm). Only the existing 16 native frames are retimed, the hit is still on frame 8, and no assets are regenerated or edited. Ordinary attacks drop the extra `recoil → gloat` ending; the arm recovery, leg recovery and steadying that are part of the action itself are kept.
 
-## 满条后的无帽大捣蛋
+## Hatless big mischief at full bar
 
-共同开场建议 1.5–2 秒：盯住目标、压低身子、双手抓帽，向侧后方抛帽；帽子作为独立道具沿小弧线落在当前屏幕内并弹一下。人物切换为无帽形态。接着只选择一招，不连续破坏多个窗口。已采用的收尾顺序是：完成大招 → 捡回原帽并端在手中 → 碎片或两半缩小并进入帽口 → 戴帽回到日常。真实窗口继续保持最小化，只有用户右键归还才恢复；收纳后的等待没有时限。
+A shared opening of 1.5–2 seconds is suggested: she stares at the target, crouches low, grabs her hat with both hands and throws it backward to the side; the hat, as a separate prop, lands on the current screen along a small arc and bounces once. The character switches to her hatless form. Then she chooses just one move and never destroys several windows in a row. The adopted ending order is: finish the special move → pick the original hat back up and hold it in her hands → the shards or two halves shrink and go into the hat opening → put the hat on and return to daily life. The real window stays minimized and is only restored when the user returns it via right-click; there is no time limit on waiting after stashing.
 
-| 招式 | 画面设计 | 建议顺序 |
+| Move | Visual design | Suggested order |
 | --- | --- | --- |
-| 爆踢碎窗 | 无帽接近后明确收腿压势，快速踢中并短停，再让裂纹和较大的卡通碎片清楚展开。原片段完成收腿后，碎片暂留在最终位置；角色捡帽持稳，让这些碎片缩小、移动并收进帽口，再戴帽恢复日常。不追加下蹲，避免尖锐玻璃渣和写实暴力。 | 首批完整实现 |
-| 双手撕窗 | 抛帽后临时变大，第 3 帧抓稳完整窗口，身体先压低蓄力，再上下拉长用力；第 8 帧断裂，第 9 帧保持上下整片完全展开，第 10 帧放手并缩回原体型。两半暂留在最大展开位置，等角色捡帽持稳后一起缩小、收进帽口，最后戴帽回到日常。手、身体变形与断口使用同一屏幕坐标，不追加甩手或抱膝。 | 首批完整实现 |
-| 拍成薄饼 | 两手或小跳坐下，把窗口影像拍扁，停一拍后像弹簧一样弹回完整窗口，她反被弹起。 | 后续候选，动作短、易于控制干扰 |
-| 折成纸飞机 | 把窗口画面折成几段，变成纸飞机从她旁边掠过，短飞行后展开还原。 | 后续候选，需额外折叠表现 |
-| 揉团踢进帽子 | 将窗口揉成纸团，朝刚扔在地上的帽子踢过去；帽子被撞得翻个面，随后倒出并还原窗口。 | 后续候选，复杂度较高 |
+| Shattering super kick | After approaching hatless, she clearly pulls her leg back and leans in, kicks quickly with a hit-stop, then the cracks and fairly large cartoon shards spread out clearly. After the original clip finishes the leg recovery, the shards stay in their final positions; the character picks up her hat and holds it steady, the shards shrink, move and go into the hat opening, then she puts the hat on and returns to daily life. No extra crouch, and no sharp glass splinters or realistic violence. | Fully implemented in the first batch |
+| Two-handed tear | After throwing the hat she temporarily grows bigger, grips the whole window firmly on frame 3, first crouches to wind up, then stretches up and down with effort; it breaks on frame 8, frame 9 keeps the upper and lower pieces fully spread, and on frame 10 she lets go and shrinks back to her original size. The two halves stay at their maximum spread until the character picks up her hat and holds it steady, then they shrink together and go into the hat opening, and finally she puts her hat on and returns to daily life. Hands, body deformation and the break line use the same screen coordinates, with no extra hand flicking or knee hugging. | Fully implemented in the first batch |
+| Flatten into a pancake | With both hands or a little hop and sit, she flattens the window image, pauses a beat, then it springs back into the whole window like a spring and she gets bounced up instead. | Later candidate; short action, easy to keep unintrusive |
+| Fold into a paper plane | The window image is folded into several segments and becomes a paper plane that flies past her, then unfolds and restores after a short flight. | Later candidate; needs extra folding presentation |
+| Crumple and kick into the hat | The window is crumpled into a paper ball and kicked toward the hat she just threw on the ground; the hat is knocked over, then the window is poured out and restored. | Later candidate; higher complexity |
 
-碎裂、撕裂都只作用于窗口快照；真实应用保持最小化，不关闭、不杀进程、不改文件或正文。大招结果先以碎片/两半形态进入同一顶帽子，收纳完成后不继续散落桌面，菲比戴帽回到日常。用户右键选择“把窗口还回来”才取出并恢复，不定时自动归还；任务栏仍保留用户主动恢复入口。上述额外招式是创意备选，不自动扩大首批范围。
+Shattering and tearing only affect the window snapshot; the real app stays minimized and is never closed, its process never killed, and its files or content never changed. The result of a special move first goes into the same hat as shards/two halves; once stashed, nothing stays scattered on the desktop, and Feibi puts her hat on and returns to daily life. Only when the user chooses "Give the Windows Back" via right-click is it taken out and restored, never automatically on a timer; the taskbar still keeps the entry for the user to restore it themselves. The extra moves above are creative alternatives and do not automatically expand the first batch's scope.
 
-捡帽阶段的窗口生命周期（已采用，2026-09-23）：帽子道具窗和快照覆盖层在关闭开始时即禁止再次显示，主窗口先移除帽子引用再关闭；重复关闭及关闭事件内重入均须无害。逐帧帽子更新若发生窗口状态异常，转入既有 `PlaybackFailed` 取消与目标恢复流程，不能让异常越过主渲染循环使进程退出。异常日志额外记录不带本机文件路径的方法调用链，便于区分帽子与快照覆盖层；不记录窗口内容。无界面生命周期回归已通过，100%/125% 双屏上的自主碎窗和真实目标恢复仍待用户实机验收。
+Window lifecycle during the hat pickup phase (adopted, 2026-09-23): the hat prop window and the snapshot overlay are barred from showing again as soon as closing starts, and the main window removes its hat reference before closing; repeated closing and re-entry inside close events must both be harmless. If a window-state error occurs in the per-frame hat update, it goes into the existing `PlaybackFailed` cancellation and target-restore flow, and the error must never escape the main render loop and make the process exit. The error log additionally records the method call chain without local file paths, to tell the hat apart from the snapshot overlay; window content is not recorded. The headless lifecycle regression has passed; autonomous shattering and real target restoring on dual 100%/125% screens still await the user's hands-on acceptance.
 
-复用现有原生动作衔接：`hat_pickup` 末帧已是双手端帽，直接接 `hat_store` 接收碎片/两半，再接 `hat_wear` 戴回；需要等收纳准备时才使用短暂 `hat_hold`，不先戴上再重新摘帽。收纳沿用实际逐帧帽口及前帽沿遮罩，必须看见破坏结果进入帽内，不能只淡出或突然替换成完整卡片。本轮不重新生成或编辑角色图片。
+The existing native action transitions are reused: the last frame of `hat_pickup` already shows her holding the hat in both hands, so it goes straight into `hat_store` to receive the shards/two halves, then `hat_wear` to put it back on; the short `hat_hold` is only used when waiting for the stash to be ready, without first putting the hat on and then taking it off again. Stashing keeps using the actual per-frame hat opening and front brim mask; the destruction result must visibly go into the hat, not just fade out or suddenly turn into a whole card. This round does not regenerate or edit character images.
 
-## 已采用技术与复用
+## Adopted technology and reuse
 
-现有 `WindowSurfaceProvider`、平台/侧撞/容器物理、显示器坐标和动画系统继续复用。目前窗口物理主要是窗口影响角色，主动控制别的应用窗口是新增能力。
+The existing `WindowSurfaceProvider`, platform/side-impact/enclosure physics, monitor coordinates and animation system continue to be reused. So far, window physics has mainly been windows affecting the character; actively controlling other apps' windows is a new capability.
 
-踢、打、撞采用 Win32 `SetWindowPos`，共享受控位移流程，保留各自蓄力和冲量曲线。保留原窗口大小、层级，使用异步且不激活的请求；回读实际位置，应用拒绝移动时结束互动，不提权。接口来源见 [微软文档](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-setwindowpos)。本次控制窗口有明确归属，现有侧撞检测不把同一次主动踢窗再次解释为窗口撞宠。
+Kicks, punches and charges use Win32 `SetWindowPos` through a shared controlled-displacement flow, each keeping its own wind-up and impulse curve. The original window size and z-order are kept, using asynchronous, non-activating requests; the actual position is read back, and if the app refuses to move, the interaction ends, without elevating privileges. For the API, see [Microsoft's documentation](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-setwindowpos). The window controlled this time has clear ownership, so the existing side-impact detection does not reinterpret the same active kick as the window hitting the pet.
 
-帽子流程采用：捕获目标的一帧真实可见画面 → 内存透明特效层接管 → 原窗口最小化 → 卡片缩小、轻旋转并进入帽口 → 菲比戴帽回到日常，窗口保持收起。右键恢复时摘帽取出同一卡片并展开，再恢复原窗口。真实窗口不旋转、不变形、不塞到屏幕外；最小化后保留任务栏恢复入口，不隐藏窗口或关闭进程。显示状态接口见 [ShowWindow 文档](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-showwindow)。
+The hat flow is: capture one frame of the target's real visible image → an in-memory transparent effect layer takes over → the original window is minimized → the card shrinks, rotates slightly and goes into the hat opening → Feibi puts her hat on and returns to daily life, with the window staying hidden. On right-click restore she takes off her hat, takes out the same card and unfolds it, then restores the original window. The real window is never rotated, deformed or pushed off screen; after minimizing, the taskbar restore entry is kept, and the window is never hidden or its process closed. For the display-state API, see the [ShowWindow documentation](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-showwindow).
 
-本轮采用 `Graphics.CopyFromScreen` 的 BitBlt 可见像素捕获，接入现有 WPF 特效层；允许用户正在操作的任何非最大化、非全屏前台窗口作为目标，同时仍要求无遮挡、完整位于单屏工作区。捕获前后重新验证窗口身份、位置和遮挡，包括桌宠自身的遮挡；不读取被遮住或受保护内容，不用通用假窗口替代失败快照。已知的 NVIDIA/Windows 输入体验等全屏捕获层按明确身份忽略，不把它们当作实体窗口。此选择复用已有 .NET/Win32 依赖，不增加新的捕获运行库；`WindowPrankController` 由项目维护者维护。
+This round uses BitBlt visible-pixel capture through `Graphics.CopyFromScreen`, connected to the existing WPF effect layer; any non-maximized, non-full-screen foreground window the user is working with may be a target, while still requiring it to be unobscured and fully inside one screen's work area. The window identity, position and occlusion, including occlusion by the desktop pet itself, are re-verified before and after capture; covered or protected content is never read, and a failed snapshot is never replaced by a generic fake window. Known full-screen capture layers such as NVIDIA's and Windows Input Experience are ignored by explicit identity and never treated as solid windows. This choice reuses the existing .NET/Win32 dependencies and adds no new capture runtime library; `WindowPrankController` is maintained by the project maintainer.
 
-Windows Graphics Capture 仅保留为未来兼容性扩展候选，不是当前实现，也不是本阶段前置条件；其来源见 [窗口捕获文档](https://learn.microsoft.com/en-us/windows/apps/develop/media-authoring-processing/screen-capture)。BitBlt 的黑帧、动态内容快照和切换闪烁仍由用户手测：未得到可信画面时不最小化目标。画面短时驻留内存，不保存截图、做 OCR 或上传。
+Windows Graphics Capture is kept only as a candidate for future compatibility extension; it is neither the current implementation nor a prerequisite for this phase. For its source, see the [window capture documentation](https://learn.microsoft.com/en-us/windows/apps/develop/media-authoring-processing/screen-capture). BitBlt black frames, snapshots of dynamic content and switching flicker are still tested manually by the user: if no trustworthy image is obtained, the target is not minimized. The image stays in memory only briefly; no screenshot is saved, no OCR is done and nothing is uploaded.
 
-同一张窗口快照也用于满条招式：WPF 图像裁片与多边形遮罩负责碎块，时间驱动位移和旋转负责飞散；撕裂先弹性拉紧完整快照，再沿共同横向锯齿断口把上下两整片拉开，与实际手部锚点同步，不做横向扫开的裁边。体型、节奏和维护位置统一见 [角色说明](CHARACTERS.md#已采用的攻击节奏)。放手后保存最终裁片形状与位置，随后把这些裁片移入帽口，收纳与右键取回都复用同一份内存快照，不重新捕获或覆盖原应用内容。软件窗口不支持真实碎裂，这是快照特效。只有快照可用、接管完毕且真实窗口已最小化才开始破坏；失败执行安全恢复，不能把未执行的系统操作当成功。
+The same window snapshot is also used for the full-bar moves: WPF image clips and polygon masks produce the shards, and time-driven displacement and rotation make them fly apart; the tear first stretches the whole snapshot elastically, then pulls the upper and lower whole pieces apart along a shared horizontal jagged break line, synchronized with the actual hand anchors, without a sideways sweeping crop. Size, rhythm and maintenance locations are documented in one place in [Characters](CHARACTERS.md#adopted-attack-rhythm). After she lets go, the final clip shapes and positions are saved and the clips then move into the hat opening; stashing and right-click retrieval both reuse the same in-memory snapshot, without recapturing or overwriting the original app content. Software windows cannot really shatter; this is a snapshot effect. Destruction only starts when the snapshot is available, the takeover is complete and the real window is minimized; on failure a safe restore runs, and a system operation that never ran must not be treated as a success.
 
-帽口需要前后遮挡：角色画面、窗口卡片、前帽沿遮罩分别合成。遮罩和帽口锚点从选定原生帧确定，不要求整个人物拆成骨骼。常规移动继续用现有 WPF，不更换引擎、不注入目标进程；角色动作事件是窗口位移、特效和后续专属音频的共同时间基准。
+The hat opening needs front and back occlusion: the character image, the window card and the front brim mask are composited separately. The mask and hat-opening anchors are determined from the selected native frames, without requiring the whole character to be split into a skeleton. Regular movement keeps using the existing WPF, without switching engines or injecting into the target process; the character's action events are the shared time base for window displacement, effects and the later dedicated audio.
 
-## 自主行为与恢复
+## Autonomous behavior and restoring
 
-- 帽子空闲时，手动“捣蛋一下”依次轮换踢、打、冲撞、藏帽；帽子有存货时只在踢、打、冲撞中选择。自主捣蛋默认开启，旧设置一次性升级、后续主动关闭的保留规则及只读菜单状态见[角色默认与节奏](CHARACTERS.md#自主捣蛋默认值与节奏)。
-- 自主和手动都允许当前前台窗口；最大化/全屏目标自身、实际遮挡、无任务栏恢复入口或权限不兼容的窗口不动。后台窗口仍只选择普通可恢复窗口。手动入口优先使用菜单打开时记录的前台窗口；目标缺失会快速重试，但不会放宽安全检查。
-- 真实移动留在当前显示器可用工作区，标题栏必须可取回，不做窗口之间的连锁撞击。同一时刻最多一个小动作目标，另可保留一份已收起的存货，两者的控制与安全状态独立。
-- 踢/打的命中按动画时间轴上的一次性事件触发，低帧率跳过某帧也不能漏掉或重复命中。窗口可见边缘与系统外框坐标分别处理，保留隐形边框偏差，避免角色隔空踢窗。
-- 目标窗口被用户拖动、激活、最大化或关闭时停止介入；不会继续把它拉回旧位置，也不会再次最小化用户已主动恢复的窗口。
-- 帽子仅有一个存货槽，没有自动归还计时器；存货不妨碍另一个小动作，也不能被其普通失败覆盖或归还。右键选择“把窗口还回来”时优先取消当前小动作，接回存货原快照与类型再恢复；点击帽子或特效不归还。惰性停放、控制器复用及维护范围统一见[单槽窗口存货](CHARACTERS.md#单槽窗口存货与并行小动作)。
-- 帽子收藏与需要收帽的无帽大招互斥，存货归还前不执行第二次收窗或大招。用户主动接管存货目标时撤掉其快照；退出、切角色、锁屏/休眠、真实显示布局或工作区变化仍清理当前动作并安全归还存货。普通小动作失败只影响自己的目标。日常回家、拖拽（含跨屏）、尺寸和安静模式保持存货；宠物跨屏不等同于显示拓扑变化。独立帽子始终属于这一场表演，不留失主帽子，正常无帽动作不闪回戴帽帧。正式安全边界见[角色说明](CHARACTERS.md#窗口结果由用户主动恢复已采用)。
-- 恢复前核对仍为原来的窗口与进程，结合用户接管状态处理，不能仅凭可能复用的窗口句柄操作。仅在内存保存必要状态；日志记动作、结果、耗时和失败原因，不记窗口标题、正文或截图。
+- When the hat is free, the manual "Make Mischief Now" rotates through kick, punch, charge and hat stash in turn; when the hat holds something, it only chooses among kick, punch and charge. Autonomous mischief is on by default; for the one-time upgrade of old settings, keeping a later manual turn-off, and the read-only menu status, see [Character defaults and rhythm](CHARACTERS.md#autonomous-mischief-defaults-and-rhythm).
+- Both autonomous and manual modes allow the current foreground window; maximized/full-screen targets themselves, windows that are actually covered, windows with no taskbar restore entry, or windows with incompatible permissions are left alone. Background windows are still only chosen among ordinary restorable windows. The manual entry prefers the foreground window recorded when the menu was opened; a missing target is retried quickly, but the safety checks are never relaxed.
+- Real movement stays within the current monitor's usable work area, the title bar must remain reachable, and windows never set off chain collisions with each other. At any moment there is at most one small-action target, plus possibly one stashed window held in reserve; the control and safety state of the two are independent.
+- Kick/punch hits are triggered by one-time events on the animation timeline, so a skipped frame at a low frame rate can neither miss nor duplicate a hit. The window's visible edge and the system frame coordinates are handled separately, keeping the invisible-border offset so the character never kicks the window from a distance.
+- When the user drags, activates, maximizes or closes the target window, intervention stops; the window is never pulled back to its old position, and a window the user has already restored is never minimized again.
+- The hat has only one stash slot and no automatic return timer; the stash does not block another small action, and cannot be overwritten or returned by that action's ordinary failure. Choosing "Give the Windows Back" via right-click first cancels the current small action, then takes back the stash's original snapshot and type and restores it; clicking the hat or effects does not return it. Lazy parking, controller reuse and the maintenance scope are documented in one place in [Single-slot window stash](CHARACTERS.md#single-slot-window-stash-and-parallel-small-actions).
+- The hat stash and the hatless special move that needs to stash into the hat are mutually exclusive; no second window stash or special move runs before the stash is returned. When the user actively takes over the stashed target, its snapshot is removed; exiting, switching characters, screen lock/sleep, and real display layout or work-area changes still clean up the current action and safely return the stash. An ordinary small action failing only affects its own target. Everyday going home, dragging (including across screens), resizing and Quiet Mode keep the stash; the pet crossing screens is not the same as a display topology change. The separate hat always belongs to this one performance, no ownerless hat is left behind, and normal hatless actions never flash back to hat-wearing frames. The official safety boundaries are in [Characters](CHARACTERS.md#window-results-restored-by-the-user-adopted).
+- Before restoring, it checks that it is still the original window and process, and takes the user's takeover state into account; it must never operate based only on a window handle that may have been reused. Only the necessary state is kept in memory; the log records the action, result, duration and failure reason, never the window title, content or screenshots.
 
-## 独立专属测试
+## Standalone exclusive test
 
-`Revision 6` 固定顺序为 `Kick → Punch → Charge → HatStoreReturn → Tease → Shatter → Tear → HatlessInterruption`。完整窗口藏帽只演示一次，大招另验证碎片或两半收帽；四项收窗/破坏测试等待真实右键请求后恢复，人工等待不计超时。提前归还而未完成收纳或无帽观察时标记 `NeedsReview`。`Tease` 独立涨条，不执行窗口预检；窗口动作只操作自有测试窗口，保留身份、遮挡、位置及系统结果检查，不放宽普通模式的目标安全边界。操作见 [手工清单](../SELF_TEST.md#06-菲比独立专属功能演示)。
+The fixed order of `Revision 6` is `Kick → Punch → Charge → HatStoreReturn → Tease → Shatter → Tear → HatlessInterruption`. The complete window hat stash is demonstrated only once, and the special moves additionally verify that the shards or two halves are stashed in the hat; the four stash/destruction tests wait for a real right-click request before restoring, and the manual wait does not count toward any timeout. Returning early before stashing or the hatless observation is complete is marked `NeedsReview`. `Tease` fills the bar on its own without a window precheck; window actions only operate the program's own test window, keeping the identity, occlusion, position and system-result checks, without relaxing normal mode's target safety boundaries. For the procedure, see the [manual checklist](../SELF_TEST.md#06-feibis-standalone-exclusive-feature-test).
 
-进度仅显示在右键菜单、测试窗口标题和报告中；失败暂停当前项，可“重试本项”或停止，不能把尚未执行的后续项记作失败。演示使用独立临时状态，不改日常设置或存档。测试窗口的不激活置前及完整流程仍需实机确认，当前验收状态集中维护于 [角色进度](CHARACTERS.md#当前进度与阶段退出条件)。
+Progress is shown only in the right-click menu, the test window title and the report; a failure pauses the current step, which can be retried with "Retry This Step" or stopped, and later steps that have not yet run must not be recorded as failures. The demonstration uses separate temporary state and never changes everyday settings or save data. Bringing the test window to the front without activating it and the complete flow still need hands-on confirmation; the current acceptance status is maintained centrally in [Character progress](CHARACTERS.md#current-progress-and-phase-exit-criteria).
 
-## 美术交付
+## Art delivery
 
-本轮确定复用 13 套非食物日常动作，新增 20 套捣蛋动作，每套 16 张原生帧，菲比合计 528 张运行帧；另有独立帽子和 4 套逐帧帽沿前景遮罩。完整目录以 [角色动作契约](CHARACTERS.md#动作与几何契约) 和 `MischiefAnimationCatalog` 为准。覆盖偷偷接近、踢打冲撞、回弹、摘帽收纳归还、抛帽、无帽跑动/踢击/撕扯/拖拽/坠落、捡帽戴回。复杂戏按阶段衔接，不用食物帧改名代播。
+This round settles on reusing 13 non-food everyday action sets and adding 20 mischief action sets, each with 16 native frames, for a total of 528 runtime frames for Feibi; plus a separate hat and 4 sets of per-frame front-brim foreground masks. The complete catalog follows the [character action contract](CHARACTERS.md#action-and-geometry-contract) and `MischiefAnimationCatalog`. It covers sneaking up, kicking/punching/charging, rebounding, removing the hat to stash and return, throwing the hat, hatless running/kicking/tearing/being dragged/falling, and picking up and putting the hat back on. Complex scenes are chained by phases, and food frames are never renamed to stand in.
 
-每次模型生成均从用户原始菲比图片出发；不将生成的序列帧作为模型输入。保留原图、提示词、输出与处理记录；切分、键色和锚点标定使用确定性处理。重点验看完整帽沿和双脚、相邻帧尺度与位置、挥击接触点、帽子开口方向、卡片遮挡和动作首尾衔接。视觉运动采用按时间推进的位移和缩放，不能通过全局加快序列帧制造活力。
+Every model generation starts from the user's original Feibi image; generated sprite frames are never used as model input. Original images, prompts, outputs and processing records are kept; splitting, color keying and anchor calibration use deterministic processing. Key checks: the complete hat brim and both feet, scale and position across adjacent frames, swing contact points, the hat opening's direction, card occlusion, and how actions start and end. Visual motion uses time-driven displacement and scaling; liveliness must not be faked by globally speeding up the sprite frames.
 
-无帽形态同样直接以原图为唯一人物参考生成，并在提示词中明确摘帽后的头发、头型与身份约束；不能先生成一张无帽立绘，再将该 AI 成品输入模型扩展动作。窗口碎片来自用户真实窗口在内存中的图像，不作为生成模型输入。
+The hatless form is likewise generated directly with the original as the only character reference, with the hair, head shape and identity constraints after removing the hat stated explicitly in the prompt; never generate a hatless standing image first and then feed that AI result into the model to expand actions. Window shards come from the in-memory image of the user's real window and are never used as generation model input.
 
-## 实施顺序与退出条件
+## Implementation order and exit criteria
 
-1. 角色隔离与捣蛋条：菲比没有食物监听结果消费、进食队列、饥饿行为、食物语音映射和界面；换角时处理旧食物视觉与任务归属，不把糯糯待吃任务交给菲比。接入满条一次性触发、暂停和冷却，切回糯糯功能与存档不变。
-2. 踢窗闭环：真实目标识别、完整专属动作、接触触发、受控位移、用户接管和边界保护一起验收；随后加入拳击和冲撞变体。
-3. 帽子闭环：先验证真实画面接管和最小化/恢复不丢窗口，再完成摘帽、收纳遮挡、持有与归还动作。验收要求看起来确实进入帽内，而非直接淡出。
-4. 满条闭环：抛帽、无帽爆踢碎窗与双手撕窗、捡帽持稳、真实碎片/两半收进帽口、戴帽后正常活动，最后由用户右键发起取回还原；美术、快照、系统窗口状态与捣蛋条同步验收，收纳后的等待不计时。
-5. 自主触发与回归：低频自主行为、安静模式、角色切换、退出归还、混合 DPI 与窗口兼容性；补齐动作、截图资源释放和不抢焦点验证。
+1. Character isolation and the mischief bar: Feibi has no consumption of food-watcher results, eating queue, hunger behavior, food voice mapping or food UI; when switching characters, the old food visuals and task ownership are handled, and Nuonuo's pending meals are never handed to Feibi. Wire in the one-time full-bar trigger, pausing and cooldown; switching back to Nuonuo leaves her features and save data unchanged.
+2. Kick loop: real target recognition, the complete dedicated action, contact triggering, controlled displacement, user takeover and boundary protection are accepted together; then the punch and charge variants are added.
+3. Hat loop: first verify the real-image takeover and that minimizing/restoring never loses windows, then complete hat removal, stash occlusion, holding and the return action. Acceptance requires that it really looks like it goes into the hat, not just fades out.
+4. Full-bar loop: throwing the hat, the hatless shattering super kick and the two-handed tear, picking up and steadying the hat, the real shards/two halves going into the hat opening, normal activity after putting the hat on, and finally the user starting retrieval and restoration via right-click; art, snapshots, system window state and the mischief bar are accepted together, and the wait after stashing is not timed.
+5. Autonomous triggering and regression: low-frequency autonomous behavior, Quiet Mode, character switching, returning on exit, mixed DPI and window compatibility; complete the verification of actions, release of screenshot resources and never stealing focus.
 
-自动验证保持后台无声；真实窗口移动、截图接管和视觉节奏由用户亲自实测。离线通过不能替代桌面效果验收。全套内容保留在计划中，分阶段交付不等于省略帽子表演或美术。
+Automated verification stays silent in the background; real window movement, screenshot takeover and visual rhythm are tested by the user personally. Offline passes cannot replace acceptance of the desktop effect. The full scope stays in the plan; phased delivery does not mean omitting the hat performance or the art.

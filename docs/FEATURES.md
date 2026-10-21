@@ -1,135 +1,135 @@
-# 功能说明
+# Features
 
-本文描述啾糯桌宠当前已经实现的能力、行为边界和仍需实机验证的部分。仓库首页只保留快速上手信息；具体实现状态以本文和源码为准。角色配置、素材来源和本次角色阶段的进度集中维护于 [角色说明](CHARACTERS.md)。
+This document describes the capabilities JiuNuo Desktop Pet currently implements, its behavior boundaries, and the parts that still need hands-on verification. The repository home page keeps only quick-start information; this document and the source code are authoritative on implementation status. Character configuration, asset sources and the progress of the current character phase are maintained centrally in [Characters](CHARACTERS.md).
 
-## 状态标记
+## Status labels
 
-| 标记 | 含义 |
+| Label | Meaning |
 | --- | --- |
-| 稳定 | 已有自动化逻辑测试，并经过常规桌面环境验证 |
-| 实验性 | 功能可用，但对显示器布局、窗口类型或系统行为较敏感 |
-| 待实测 | 实现与适用离线检查已完成，尚待用户在 Windows 桌面验收 |
-| 待验证 | 已进入实现或素材制作，尚未完成本阶段验收，不能视为稳定能力 |
-| 规划中 | 尚未实现，不应视为当前能力 |
+| Stable | Covered by automated logic tests and verified in ordinary desktop environments |
+| Experimental | Works, but is sensitive to monitor layout, window type or system behavior |
+| Awaiting hands-on test | Implementation and applicable offline checks are done; awaiting user acceptance on a Windows desktop |
+| Awaiting verification | In implementation or asset production, without this phase's acceptance completed; not to be considered a stable capability |
+| Planned | Not implemented yet; not to be considered a current capability |
 
-## 角色选择
+## Character selection
 
-| 能力 | 状态 | 说明 |
+| Capability | Status | Notes |
 | --- | --- | --- |
-| 糯糯 / 菲比啾比切换 | 待验证 | 单人模式切换当前角色；共存模式下选择角色会先结束陪伴窗口再切换，素材与验收进度见角色说明 |
-| 双宠共存与同步设置 | 待实测 | 同一进程显示两位角色，共用一个托盘和大小、禁音、安静、无限模式；各自保留独立状态及专属行为，见[角色说明](CHARACTERS.md#双宠共存与同步设置2026-09-23-已采用待实机验收) |
-| 删除图标双人接力 | 待实测 | 双宠可用且桌面图标位置明确时，菲比踢动原有假图标，糯糯张嘴接住；位置或状态不适合时回退单人吸入。真实文件操作仍由 Windows 负责，时序与边界见[双宠互动](INTERACTION_PLAN.md#删除图标双人接力) |
-| 独立养成存档 | 待验证 | 糯糯旧档不变；菲比独立保存困倦、好奇及捣蛋状态，不新增进食记录；尺寸、静音与安静模式共用 |
-| 菲比啾比性格表现 | 待实测 | 更活泼的移动、探索和跳跃倾向，配合专属录音；困倦、地形限制和生活模式仍优先 |
-| 菲比啾比窗口捣蛋 | 待验证 | 踢、打、撞窗、帽子收藏归还，以及满条后扔帽踢碎/撕裂；代码已接入，完整新素材和真实桌面效果尚未验收 |
-| 菲比啾比角色隔离 | 待验证 | 不吃或舔图标，不启动食物消费监听，无饥饿条和禁食菜单；头顶改为捣蛋条 |
-| 菲比啾比语音 | 已接入，待手测 | 使用用户提供的专属录音，日常轮换及情绪/捣蛋回应；映射与验收状态见 [角色说明](CHARACTERS.md#菲比专属语音) |
+| Nuonuo / Feibi Jiubi switching | Awaiting verification | In single-pet mode it switches the current character; in coexistence mode, choosing a character first ends the companion window and then switches. See Characters for asset and acceptance progress |
+| Both-pets coexistence and synced settings | Awaiting hands-on test | One process shows both characters, sharing one tray icon and the size, mute, Quiet and Infinite Mode settings; each keeps its own state and exclusive behaviors. See [Characters](CHARACTERS.md#both-pets-coexistence-and-synced-settings-adopted-2026-09-23-awaiting-hands-on-acceptance) |
+| Two-pet relay for deleted icons | Awaiting hands-on test | When both pets are available and the desktop icon position is clear, Feibi kicks the original fake icon and Nuonuo opens her mouth to catch it; when position or state is unsuitable, it falls back to the single-pet slurp. Real file operations remain Windows' responsibility; for timing and boundaries see [Two-pet interactions](INTERACTION_PLAN.md#two-pet-relay-for-deleted-icons) |
+| Separate progress saves | Awaiting verification | Nuonuo's old save is unchanged; Feibi separately saves sleepiness, curiosity and mischief state and adds no meal records; size, mute and Quiet Mode are shared |
+| Feibi Jiubi's personality | Awaiting hands-on test | A livelier tendency to move, explore and jump, together with her own recordings; sleepiness, terrain limits and life modes still take priority |
+| Feibi Jiubi's window mischief | Awaiting verification | Kicking, punching and charging windows, stashing and returning them via the hat, and with a full bar throwing her hat to shatter/tear; the code is wired in, but the complete new assets and the real desktop effect are not yet accepted |
+| Feibi Jiubi's character isolation | Awaiting verification | Does not eat or lick icons, does not start the food-consumption watcher, has no hunger bar or Fasting Mode menu; the bar above her head is a mischief bar instead |
+| Feibi Jiubi's voice | Wired in, awaiting manual test | Uses the dedicated recordings the user provided, for everyday rotation and emotional/mischief responses; for the mapping and acceptance status see [Characters](CHARACTERS.md#feibis-dedicated-voice) |
 
-未选择过角色时默认糯糯；成功切换后保存最后选择。拖拽或当前吞食、满足动作期间的切换请求会延后；点击仍被勾选的当前角色可取消待切换请求。素材不完整时保持当前角色和菜单勾选，日志记录拒绝原因；菜单勾选只表示已经生效的角色。切换边界与验收清单见 [角色说明](CHARACTERS.md) 和 [手工实测](../SELF_TEST.md#04-角色切换与隔离)。
+If no character has ever been chosen, Nuonuo is the default; after a successful switch, the last choice is saved. Switch requests while dragging or during the current swallowing or satisfied animation are delayed; clicking the still-checked current character cancels a pending switch. If assets are incomplete, the current character and the menu check mark stay as they are, and the log records the reason for rejection; the menu check mark only indicates a character that is actually in effect. For switching boundaries and the acceptance checklist, see [Characters](CHARACTERS.md) and [Manual tests](../SELF_TEST.md#04-character-switching-and-isolation).
 
-头顶对话气泡由右键菜单独立开关，旧设置默认关闭；开启后显示简短状态台词，双宠共存时可自动或手动轮流对话。气泡不显示测试提示，也不代替语音、糯糯饥饿条或菲比捣蛋条。时序与边界见 [双宠互动](INTERACTION_PLAN.md#头顶对话气泡)。状态：待实测。
+Speech bubbles above the head have their own switch in the right-click menu, off by default for old settings; when on, they show short status lines, and with both pets together they can take turns talking automatically or manually. The bubbles never show test hints and do not replace voices, Nuonuo's hunger bar or Feibi's mischief bar. For timing and boundaries see [Two-pet interactions](INTERACTION_PLAN.md#speech-bubbles-above-the-head). Status: awaiting hands-on test.
 
-切入菲比会清理糯糯待吃队列和假图标，不转交进食任务；切走菲比先结束窗口捣蛋并尝试归还托管窗口。旧图像生成结果保留供追溯，不代表当前角色仍支持食物行为。
+Switching to Feibi clears Nuonuo's pending meal queue and fake icons and does not hand over eating tasks; switching away from Feibi first ends window mischief and tries to return any held windows. Old image-generation results are kept for traceability and do not mean the current character still supports food behavior.
 
-## 菲比啾比窗口捣蛋
+## Feibi Jiubi's window mischief
 
-菲比专属菜单提供“允许自主捣蛋”“捣蛋一下”“逗逗她”“把窗口还回来”。自主开关默认开启；手动普通动作按踢、打、冲撞、藏帽轮换，满条选择无帽爆踢或撕裂。条值、冷却、动作目录及阶段状态统一见 [角色说明](CHARACTERS.md)，效果和实现依据见 [窗口捣蛋设计](FEIBI_WINDOW_PLAY_PLAN.md)。
+Feibi's own menu provides "Allow Autonomous Mischief", "Make Mischief Now", "Tease Her" and "Give the Windows Back". The autonomous switch is on by default; manual ordinary actions rotate through kick, punch, charge and hat stash, and with a full bar she chooses a hatless super kick or a tear. Bar values, cooldowns, the action catalog and phase status are documented in one place in [Characters](CHARACTERS.md); for the effects and the reasoning behind the implementation see [Window mischief design](FEIBI_WINDOW_PLAY_PLAN.md).
 
-普通踢打移动真实窗口，帽子和大招只变形内存中的真实窗口快照，应用保持最小化并保留任务栏入口，不关闭应用或改正文。踢碎、撕裂后菲比捡起帽子，把碎片或两半收进去，再戴帽回到日常；收完后桌面没有残留碎片，不定时归还、不自动恢复窗口。右键选择“把窗口还回来”才从帽中取出、聚合并恢复，点击帽子或碎片不归还。持有期间不开始第二个窗口捣蛋。手动捕获允许同屏、无遮挡、非最大化/非全屏的任何前台窗口；自主模式仍优先普通可恢复窗口。已知全屏捕获层按身份忽略，不把它们当作实体窗口。权限和内容保护不变。日常拖拽、回家、尺寸、安静和关闭自主不自动归还；切角、退出、锁屏、真实显示变化及异常保留安全归还。用户从任务栏主动恢复或接管目标时立即释放，完整边界见 [窗口持有规则](CHARACTERS.md#窗口结果由用户主动恢复已采用)。
+Ordinary kicks and punches move the real window; the hat and the special moves only deform an in-memory snapshot of the real window, while the app stays minimized and keeps its taskbar button, and is never closed or edited. After shattering or tearing, Feibi picks up her hat, puts the shards or two halves into it, then puts her hat on and returns to daily life; once collected, no shards remain on the desktop, and the window is not returned on a timer or restored automatically. Only choosing "Give the Windows Back" from the right-click menu takes it out of the hat, reassembles it and restores it; clicking the hat or the shards does not return it. While holding a window, she does not start a second window prank. Manual capture allows any foreground window on the same screen that is unobscured and not maximized/full screen; autonomous mode still prefers ordinary restorable windows. Known full-screen capture layers are ignored by identity and are never treated as solid windows. Permissions and content protection are unchanged. Everyday dragging, going home, resizing, Quiet Mode and turning autonomy off do not return the window automatically; switching characters, exiting, locking the screen, real display changes and errors keep the safe return. When the user restores or takes over the target from the taskbar, it is released immediately; see the full boundaries in [Window holding rules](CHARACTERS.md#window-results-restored-by-the-user-adopted).
 
-截图不落盘、不上传，不写入窗口标题或正文到捣蛋日志。异常结束时用户仍可通过任务栏找回窗口；不承诺崩溃后自动复原。
+Screenshots are never written to disk or uploaded, and window titles or content are never written to the mischief log. After an abnormal end, the user can still get the window back through the taskbar; automatic recovery after a crash is not promised.
 
-独立专属测试采用 `Revision 6`，八项顺序保持不变，只演示一次完整窗口藏帽；两项大招增加破坏后的碎片收帽检查。四项收窗/破坏步骤完成表演后等待用户右键恢复，等待无超时，不由测试自动归还；收到请求后才验证真实恢复结果并继续。提前归还而未完成收纳或无帽观察时标记 `NeedsReview`。`Tease` 不依赖窗口预检，窗口互动仍检查实际目标及安全条件。进度仅使用右键菜单、测试窗口标题和报告；真实失败可重试或停止。启动与验收见 [手工实测](../SELF_TEST.md#06-菲比独立专属功能演示)，状态见 [角色进度](CHARACTERS.md#当前进度与阶段退出条件)。
+The standalone exclusive test uses `Revision 6`, keeps the order of its eight steps unchanged, and demonstrates a complete window hat stash only once; the two special moves add a check that the shards are collected into the hat after the destruction. After the performance, the four stash/destruction steps wait for the user's right-click restore, with no timeout, and the test never returns the window automatically; only after the request does it verify the real restore result and continue. Returning early before stashing or the hatless observation is complete is marked `NeedsReview`. `Tease` does not depend on a window precheck, while window interactions still check the actual target and safety conditions. Progress uses only the right-click menu, the test window title and the report; real failures can be retried or stopped. For starting and acceptance see [Manual tests](../SELF_TEST.md#06-feibis-standalone-exclusive-feature-test), and for status see [Character progress](CHARACTERS.md#current-progress-and-phase-exit-criteria).
 
-## 交互与物理
+## Interaction and physics
 
-| 能力 | 状态 | 说明 |
+| Capability | Status | Notes |
 | --- | --- | --- |
-| 自由拖动 | 稳定 | 左键可打断待机和自主巡游；重复按下不会重入拖拽状态 |
-| 两角色捏脸 | 待实测 | 按住任一角色的脸颊向外拉，脸颊跟手伸长、持续叨手，松开 Q 弹回位；脸外仍是原拖拽，动作与素材见[捏脸说明](CHEEK_PINCH.md) |
-| 手势释放 | 稳定 | 采样松手前约 140 ms 的鼠标速度，区分轻放、横甩、上抛和斜甩 |
-| 重力与落地 | 稳定 | 释放后保留二维惯性和空气阻力，在显示器边界软弹并落到可用地形 |
-| 窗口平台 | 实验性 | 将普通可见应用窗口的顶边视为站立平台，窗口关闭或移走后重新下落 |
-| 移动平台惯性 | 实验性 | 快速上移会抛起糯糯，窗沿追上脚底时会再次顶起；向下拖动会产生短暂惯性脱离并落回实时窗沿，而不是粘住脚底 |
-| 窗口侧撞 | 实验性 | 持续跟踪普通可见窗口的实体边缘；左右边缘扫过角色身体时，按撞击方向和窗口速度施加抛飞冲量 |
-| 窗口容器 | 实验性 | 拖进窗口内部松手后切换为四壁封闭容器；角色保留惯性、受重力作用，并相对移动墙壁反弹。容器内暂停舔图标，删除进食请求会使她主动跑出 |
-| 窗沿行为 | 实验性 | 支持攀爬、跳跃、下滑、主动跳向下一层以及最大化时向外弹飞 |
-| 多显示器地形 | 实验性 | 每块显示器单独计算物理像素地形，支持负坐标与横跨显示器的窗口分段 |
+| Free dragging | Stable | The left button can interrupt idling and autonomous roaming; repeated presses never re-enter the drag state |
+| Cheek pinching for both characters | Awaiting hands-on test | Hold either character's cheek and pull outward: the cheek stretches with your hand and she keeps pouting, and on release it bounces back into place; outside the face it is still the original drag. For animation and assets see [Cheek pinching](CHEEK_PINCH.md) |
+| Gesture release | Stable | Samples the mouse velocity about 140 ms before release to distinguish gentle drops, sideways flings, upward tosses and diagonal throws |
+| Gravity and landing | Stable | After release, 2D inertia and air drag are kept; she bounces softly off monitor edges and lands on usable terrain |
+| Window platforms | Experimental | Treats the top edge of ordinary visible application windows as a standing platform; when the window closes or moves away, she falls again |
+| Moving-platform inertia | Experimental | Moving quickly upward tosses Nuonuo up, and she is pushed up again when the window edge catches up with her feet; dragging downward creates a brief inertial separation before she lands back on the live window edge, rather than sticking to her feet |
+| Window side impacts | Experimental | Continuously tracks the solid edges of ordinary visible windows; when a left or right edge sweeps through the character's body, a launch impulse is applied based on the impact direction and window speed |
+| Window enclosure | Experimental | Dragging her inside a window and releasing switches to a four-walled enclosure; the character keeps her inertia, is affected by gravity, and bounces off the moving walls relative to them. Icon licking pauses inside the enclosure, and a deletion eating request makes her run out on her own |
+| Window-edge behaviors | Experimental | Supports climbing, jumping, sliding down, actively jumping to the next level, and bouncing outward when a window is maximized |
+| Multi-monitor terrain | Experimental | Computes physical-pixel terrain separately for each monitor, supporting negative coordinates and window segments that span monitors |
 
-窗口的非角色区域使用 Win32 命中测试透传鼠标，角色主体仍可拖动。
+The non-character area of the window passes the mouse through using Win32 hit testing, while the character body can still be dragged.
 
-鼠标交互仅响应用户主动按下、拖拽、释放和右键菜单；鼠标移动本身不触发追逐、躲避、跟随或拥抱。自主探索由生活状态与窗口地形驱动，避免角色追随指针干扰操作。
+Mouse interaction only responds to the user actively pressing, dragging, releasing and the right-click menu; mouse movement alone never triggers chasing, dodging, following or hugging. Autonomous exploration is driven by life state and window terrain, so the character never follows the pointer and gets in the way.
 
-## 自主行为
+## Autonomous behavior
 
-角色通过状态机在待机、巡游、攀爬、坠落、着陆、睡眠及角色专属互动间切换。糯糯综合四项长期状态；菲比只使用困倦、好奇和独立捣蛋值，不受饥饿、饱腹驱动：
+The character switches through a state machine between idling, roaming, climbing, falling, landing, sleeping and character-specific interactions. Nuonuo combines four long-term states; Feibi uses only sleepiness, curiosity and her own mischief value, and is not driven by hunger or fullness:
 
-- **饥饿**：越高越容易请求食物或表现出饥饿行为。
-- **饱腹**：进食后上升，随时间缓慢变化。
-- **困倦**：清醒时增长，睡眠时恢复。
-- **好奇**：探索和环境交互会改变该值。
+- **Hunger**: the higher it is, the more likely she requests food or shows hungry behavior.
+- **Fullness**: rises after eating and changes slowly over time.
+- **Sleepiness**: grows while awake and recovers while sleeping.
+- **Curiosity**: exploration and interacting with the environment change this value.
 
-生活状态按角色分别原子写入，糯糯继续使用原有存档。正式路径表见 [角色数据边界](CHARACTERS.md#角色与数据边界)。下次载入时按有限的离线时长继续演化，写入中断不会破坏上一份有效数据。
+Life state is written atomically per character, and Nuonuo keeps using her original save. The official path table is in [Character data boundaries](CHARACTERS.md#characters-and-data-boundaries). On the next load it keeps evolving for a limited offline duration, and an interrupted write never corrupts the previous valid data.
 
-当前自主行为包括：
+Current autonomous behaviors include:
 
-- 站立待机使用独立的眨眼循环；每次自主决策也有小概率切换为短睡，困倦越高越容易触发；
-- 菲比仅处于站立待机时，每隔随机 20～50 秒尝试播放一段日常录音，受禁音、安静模式和语音冷却约束；不显示角色名文字；
-- 按角色的待机上限开始下一次自主决策，具体节奏见 [角色性格](CHARACTERS.md#性格与语音)；
-- 在窗口边缘掉头、攀爬、下滑或跳向邻近地形；
-- 根据需求睡觉、探索；仅糯糯会请求食物；菲比可在用户启用自主捣蛋后互动窗口；
-- 重要事件使用当前角色的本地语音，带优先级、场景冷却及录音级防重复保护。明显落地有独立回应，轻微落差保持安静；头顶文字是否出现由独立开关控制。
+- standing idle uses a separate blinking loop; each autonomous decision also has a small chance of switching to a short nap, more likely the sleepier she is;
+- only while standing idle, Feibi tries to play an everyday recording every random 20–50 seconds, subject to mute, Quiet Mode and the voice cooldown; no character-name text is shown;
+- the next autonomous decision starts according to each character's idle limit; for the specific rhythm see [Character personality](CHARACTERS.md#personality-and-voice);
+- turning around, climbing, sliding down or jumping to nearby terrain at window edges;
+- sleeping and exploring according to needs; only Nuonuo requests food; Feibi can interact with windows once the user enables autonomous mischief;
+- important events use the current character's local voice, with priorities, per-situation cooldowns and per-recording anti-repeat protection. Clear landings get their own response, small drops stay quiet; whether text appears above the head is controlled by a separate switch.
 
-托盘菜单提供两种可持久保存的生活模式：
+The tray menu provides two life modes that are saved persistently:
 
-- **禁食模式，仅糯糯**：隐藏饥饿标签和条，将饥饿固定为 0，排除讨食、舔图标和饥饿打滚；普通走动、睡觉和删除进食保留。菲比菜单不显示这一项。
-- **安静模式，两角色共用**：仅自主待机和睡觉，不巡游、攀爬、舔图标、响应删除或捣蛋；保留已收起的窗口直到右键恢复，不积攒捣蛋条。用户拖动和窗口直接碰撞保留。
+- **Fasting Mode, Nuonuo only**: hides the hunger label and bar, keeps hunger fixed at 0, and excludes begging for food, licking icons and rolling from hunger; ordinary walking, sleeping and eating deleted items are kept. Feibi's menu does not show this option.
+- **Quiet Mode, shared by both characters**: only autonomous idling and sleeping; no roaming, climbing, licking icons, responding to deletions or mischief; stashed windows are kept until a right-click restore, and the mischief bar does not build up. User dragging and direct window collisions are kept.
 
-## 回收站进食
+## Recycle Bin eating
 
-以下进食功能仅适用于糯糯，围绕 Windows 文件事件和 Explorer 元数据工作：
+The following eating features apply only to Nuonuo and work with Windows file events and Explorer metadata:
 
-1. 删除前尝试记录已选桌面项目的显示名称和物理坐标；
-2. 文件进入回收站后，从回收站元数据匹配原始名称；
-3. 将目标加入待处理队列；
-4. 糯糯移动到目标处完成进食互动；
-5. 连续删除时逐份处理，队列最多保留 24 份。
+1. before deletion, try to record the selected desktop item's display name and physical coordinates;
+2. after the file enters the Recycle Bin, match the original name from the Recycle Bin metadata;
+3. add the target to the pending queue;
+4. Nuonuo moves to the target and completes the eating interaction;
+5. consecutive deletions are processed one by one, and the queue keeps at most 24 items.
 
-进食任务可以被用户拖动打断。被打断的当前目标会重新放回队首，糯糯落地后继续处理，不会静默丢失任务。
+Eating tasks can be interrupted by user dragging. The interrupted current target is put back at the front of the queue, and Nuonuo continues after landing, so tasks are never silently lost.
 
-### 安全边界
+### Safety boundaries
 
-- 不读取被删除文件的正文内容；
-- 不替用户执行删除或恢复操作；
-- 不改变回收站内容；
-- 捕获或匹配失败时只跳过互动，不影响原始系统操作；
-- 默认监听桌面、下载目录和当前用户可见的回收站信息，可通过设置增加额外目录。
+- The contents of deleted files are never read;
+- deletion or restore is never performed on the user's behalf;
+- the contents of the Recycle Bin are never changed;
+- if capture or matching fails, only the interaction is skipped, without affecting the original system operation;
+- by default it watches the desktop, the Downloads folder and the Recycle Bin information visible to the current user; extra folders can be added in the settings.
 
-## 显示与系统集成
+## Display and system integration
 
-- 透明、无边框、始终置顶的 WPF 窗口；
-- 托盘菜单提供“让她回家”、“桌宠角色”、60%～200% 实时尺寸滑条、开机自启、禁食模式、安静模式、“显示头顶对话气泡”、“禁音”和“退出桌宠”；双宠共存时还可手动触发双人对话；角色名同步用于托盘提示和尺寸滑条标签；
-- 开机自启按当前 Windows 用户注册，便携包优先启动根目录启动器；取消勾选会删除对应启动项；
-- Per-Monitor V2 DPI 清单；
-- 显示器热插拔、分辨率、DPI 和任务栏工作区变化监听；
-- 极小工作区自动缩小，回到普通显示器后恢复设定尺寸；
-- 结构化日志记录状态转换、显示器几何、窗口支撑和文件事件；
-- 日志在 8 MB 时轮转，仅保存在本机。
+- A transparent, borderless, always-on-top WPF window;
+- the tray menu provides "Bring Her Home", "Pet Character", a live 60%–200% size slider, Start with Windows, Fasting Mode, Quiet Mode, "Show Speech Bubbles", "Mute" and "Exit Desktop Pet"; with both pets together, two-person dialogue can also be triggered manually; the character name is used in the tray tooltip and the size slider label;
+- Start with Windows registers per current Windows user, and the portable package prefers to start the root-folder launcher; unchecking it deletes the corresponding startup entry;
+- Per-Monitor V2 DPI manifest;
+- watching for monitor hot-plugging, resolution, DPI and taskbar work-area changes;
+- automatically shrinks in very small work areas and restores the configured size when back on an ordinary monitor;
+- structured logs record state transitions, monitor geometry, window support and file events;
+- the log rotates at 8 MB and is stored only on the local machine.
 
-## 当前限制
+## Current limitations
 
-- 某些 UWP、游戏、硬件加速覆盖层或自定义窗口不会提供可用的标准窗口边界。
-- Explorer 重启或第三方桌面整理工具可能使桌面位置快照失效。
-- 跨不同缩放比例的显示器移动涉及 WPF 与 Win32 坐标转换，仍需要更多硬件组合验证。
-- 应用没有数字签名、自动更新和崩溃遥测。
-- 目前没有独立设置窗口；现有常用选项集中在托盘菜单。
+- Some UWP apps, games, hardware-accelerated overlays or custom windows do not provide usable standard window bounds.
+- Restarting Explorer or third-party desktop organizers may invalidate the desktop position snapshot.
+- Moving between monitors with different scaling involves WPF and Win32 coordinate conversion and still needs verification on more hardware combinations.
+- The app has no digital signature, automatic updates or crash telemetry.
+- There is currently no separate settings window; the common options are gathered in the tray menu.
 
-## 规划方向
+## Planned directions
 
-以下内容仅代表候选方向，不承诺版本时间：
+The following are only candidate directions, with no promised release dates:
 
-- GitHub Releases 与校验值；
-- 自动化 Windows 构建与测试；
-- 更完整的设置界面；
-- 更完整的混合 DPI 与多任务栏回归矩阵；
-- 可选的行为强度和移动速度设置。
+- GitHub Releases and checksums;
+- automated Windows builds and tests;
+- a more complete settings interface;
+- a more complete regression matrix for mixed DPI and multiple taskbars;
+- optional settings for behavior intensity and movement speed.

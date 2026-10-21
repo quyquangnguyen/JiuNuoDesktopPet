@@ -25,8 +25,8 @@ def main():
         for frame in trace['frames']:
             image=Image.new('RGBA',(1280,570),'#FAF6F2')
             draw=ImageDraw.Draw(image)
-            draw.text((24,20),'原地抛食 · 两人保持距离' if file.stem=='long' else '反向站位 · 高低差抛接',font=FONT,fill='#594957')
-            draw.text((24,54),f"离线预览 / 抵达嘴部 {trace['arrival']:.2f}s",font=FONT,fill='#8A7380')
+            draw.text((24,20),'In-place treat toss · both keep their distance' if file.stem=='long' else 'Reversed positions · toss and catch across heights',font=FONT,fill='#594957')
+            draw.text((24,54),f"Offline preview / reaches mouth at {trace['arrival']:.2f}s",font=FONT,fill='#8A7380')
             for char,x,y,folder,index in [('nuonuo',trace['nx'],trace['ny'],'pair_feed',frame['nFrame']),
                 ('feibijiubi',trace['fx'],trace['fy'],frame['fFolder'],frame['fFrame'])]:
                 draw.line((x-15,y+trace['size']-7,x+trace['size']+15,y+trace['size']-7),fill='#D2BBA8',width=3)

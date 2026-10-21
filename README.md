@@ -1,58 +1,58 @@
-# 啾糯桌宠
+# JiuNuo Desktop Pet
 
-在 Windows 窗口和任务栏上生活的 WPF 桌宠：糯糯把回收站文件当食物，菲比啾比把窗口当玩具。
+A WPF desktop pet that lives on your Windows windows and taskbar: Nuonuo treats files in the Recycle Bin as food, and Feibi Jiubi treats windows as toys.
 
 > [!NOTE]
-> 正式产品名为“啾糯桌宠”，包含糯糯与菲比啾比两位角色。正式发行采用 Windows x64 自包含免安装目录，完整解压后即可运行；实机验收状态见 [角色说明](docs/CHARACTERS.md#当前进度与阶段退出条件)。
+> The official product name is "JiuNuo Desktop Pet", featuring two characters, Nuonuo and Feibi Jiubi. Official releases are self-contained, portable Windows x64 folders that run as soon as they are fully extracted; for hands-on acceptance status see [Characters](docs/CHARACTERS.md#current-progress-and-phase-exit-criteria).
 
-## 许可与素材
+## License and assets
 
-维护者拥有权利的代码采用 [PolyForm Noncommercial 1.0.0](LICENSE)，允许条款范围内的非商业使用、修改和再分发，商业使用不在授权范围内。本项目定位为“源码公开、非商业使用”。适用范围见 [NOTICE](NOTICE)。
+Code the maintainer holds rights to is licensed under [PolyForm Noncommercial 1.0.0](LICENSE), which permits noncommercial use, modification and redistribution within its terms; commercial use is not licensed. The project describes itself as "source-available, noncommercial use". See [NOTICE](NOTICE) for its scope.
 
-角色与素材来源、制作贡献及尚待确认的授权见 [ASSET_RIGHTS.md](ASSET_RIGHTS.md)。素材不自动套用代码许可，项目公开不表示已取得上游角色和画师的再分发授权。
+Character and asset sources, production contributions and licenses still to be confirmed are listed in [ASSET_RIGHTS.md](ASSET_RIGHTS.md). The assets do not automatically fall under the code license, and publishing the project does not mean redistribution rights have been obtained from the upstream characters' owners or the artists.
 
-## 项目简介
+## About the project
 
-糯糯不是固定在屏幕角落的挂件。她会把真实桌面环境当作活动空间：在任务栏和应用窗口上行走，从窗沿掉落，被快速移动的窗口撞飞，也能被放进窗口内部随四壁摇晃弹跳，并根据饥饿、困倦和好奇心自主选择行为。
+Nuonuo is not a widget pinned to a corner of the screen. She treats your real desktop as her playground: she walks on the taskbar and on application windows, falls off window edges, gets knocked flying by fast-moving windows, can be put inside a window where she sways and bounces off its walls, and chooses what to do on her own based on hunger, sleepiness and curiosity.
 
-当文件通过常规方式进入回收站时，糯糯会记住原桌面项目的位置，跑过去完成进食互动。整个过程只使用文件系统事件和必要的系统元数据，不读取文件内容，也不会替用户删除文件。
+When a file goes into the Recycle Bin the usual way, Nuonuo remembers where the original desktop item was and runs over to eat it. The whole process uses only file-system events and the necessary system metadata; it never reads file contents and never deletes files on the user's behalf.
 
-## 功能亮点
+## Highlights
 
-- **角色选择与共存**：糯糯与活泼的菲比啾比可单独切换，也可启用“双宠共存”同时出现；动作、录音和养成存档仍各自独立，共用尺寸、禁音、安静模式与可选的头顶对话气泡（默认关闭）。素材与验收状态见 [角色说明](docs/CHARACTERS.md)。
-- **菲比窗口捣蛋**：踢、打、冲撞和帽子收藏窗口，满捣蛋条后扔帽踢碎或撕裂窗口快照，再将碎片或撕开的两半收进帽子。窗口不按时间自动恢复，由用户右键“把窗口还回来”返还；攻击取消额外蹲下、伸手收尾，大招放慢以看清蓄力、破坏和收纳过程。实机验收状态见 [角色说明](docs/CHARACTERS.md#当前进度与阶段退出条件)。菲比不吃或舔图标，也没有饥饿条。
-- **桌面物理系统**：应用窗口顶边、任务栏和显示器工作区可以成为行走或落脚地形。
-- **窗口实体碰撞**：普通窗口的左右边缘可以撞飞糯糯；把她放进窗口内部后，四壁会形成可摇晃的封闭容器。
-- **有惯性的拖拽**：轻放、横甩、上抛和斜甩会得到不同的释放速度、重力和软弹效果。
-- **自主生活状态**：糯糯维护饥饿、饱腹、困倦和好奇；菲比维护困倦、好奇和独立捣蛋状态，离线不积攒捣蛋。
-- **可调角色尺寸**：托盘菜单提供 60%～200% 实时尺寸滑条，缩放时保持脚底锚点和碰撞比例一致。
-- **可选生活模式**：糯糯可启用禁食模式，两角色共用安静模式和无限模式；菲比自主捣蛋默认开启，可在菜单关闭。
-- **系统启动选项**：可选择随当前 Windows 用户登录启动，无需管理员权限。
-- **回收站进食交互**：识别删除前的桌面项目位置，支持连续删除排队和批量处理。
-- **多显示器适配**：支持负坐标显示器、跨屏窗口、工作区变化和 Per-Monitor DPI。
-- **本地优先**：运行时不联网，不上传日志或截图，不读取文件正文、不主动删除文件；窗口特效快照只短时保存在内存。
+- **Character choice and coexistence**: switch between Nuonuo and the lively Feibi Jiubi, or enable "Both Pets Together" to show both at once; animations, recordings and progress saves stay separate, while size, mute, Quiet Mode and the optional speech bubbles (off by default) are shared. For asset and acceptance status, see [Characters](docs/CHARACTERS.md).
+- **Feibi's window mischief**: she kicks, punches and charges windows and collects them in her hat; with a full mischief bar she throws her hat and shatters or tears a window snapshot, then stashes the shards or two torn halves in her hat. Windows are never restored on a timer; the user returns them with the right-click "Give the Windows Back". Attacks no longer add an extra crouch or reach at the end, and the special move is slowed down so the charge-up, destruction and stashing are easy to see. For hands-on acceptance status, see [Characters](docs/CHARACTERS.md#current-progress-and-phase-exit-criteria). Feibi does not eat or lick icons and has no hunger bar.
+- **Desktop physics**: the top edges of application windows, the taskbar and the monitor work area can all become terrain to walk or land on.
+- **Solid window collisions**: the left and right edges of ordinary windows can knock Nuonuo flying; put her inside a window and its walls form an enclosure that can be shaken.
+- **Dragging with inertia**: gentle drops, sideways flings, upward tosses and diagonal throws produce different release speeds, gravity and soft-bounce effects.
+- **Autonomous life state**: Nuonuo tracks hunger, fullness, sleepiness and curiosity; Feibi tracks sleepiness, curiosity and her own mischief state, and does not build up mischief while offline.
+- **Adjustable character size**: the tray menu has a live 60%–200% size slider, and scaling keeps the foot anchor and collision proportions consistent.
+- **Optional life modes**: Nuonuo can use Fasting Mode, both characters share Quiet Mode and Infinite Mode; Feibi's autonomous mischief is on by default and can be turned off in the menu.
+- **Startup option**: optionally start when the current Windows user signs in, with no administrator rights needed.
+- **Recycle Bin eating**: recognizes where a desktop item was before deletion, and supports queuing and batching consecutive deletions.
+- **Multi-monitor support**: supports monitors at negative coordinates, windows spanning screens, work-area changes and Per-Monitor DPI.
+- **Local first**: it never goes online at runtime, never uploads logs or screenshots, never reads file contents and never deletes files itself; window-effect snapshots are kept only briefly in memory.
 
-完整能力、行为边界和当前限制见 [功能说明](docs/FEATURES.md)。
+For the full set of capabilities, behavior boundaries and current limitations, see [Features](docs/FEATURES.md).
 
-## 环境要求
+## Requirements
 
-| 场景 | 要求 |
+| Scenario | Requirements |
 | --- | --- |
-| 运行已打包版本 | Windows 10/11 x64 |
-| 从源码运行 | Windows 10/11 x64、.NET 8 SDK |
-| 生成完整免安装包 | 上述环境、Python/Pillow，以及 Visual Studio 2022 C++ 组件或显式指定的 LLVM-MinGW；见开发指南 |
+| Run a packaged release | Windows 10/11 x64 |
+| Run from source | Windows 10/11 x64, .NET 8 SDK |
+| Build the full portable package | The above, Python/Pillow, plus the Visual Studio 2022 C++ components or an explicitly specified LLVM-MinGW; see the development guide |
 
-项目只面向 Windows。透明窗口、托盘菜单、桌面项目定位和窗口地形依赖 Win32/WPF，因此暂不支持 macOS 或 Linux。
+The project targets Windows only. Transparent windows, the tray menu, desktop item location and window terrain depend on Win32/WPF, so macOS and Linux are not supported for now.
 
-## 快速开始
+## Quick start
 
-### 下载免安装版
+### Download the Portable Edition
 
-当前版本为 **v1.3.3**，加入非商业代码许可、素材来源说明和第三方声明，固定内置 .NET/Windows Desktop 8.0.31，并加强打包检查。角色功能保持不变。发布决定、验证结果与后续事项见 [发布记录](docs/RELEASE_READINESS.md)。
+The current version is **v1.3.3**, which adds the noncommercial code license, asset-source documentation and third-party notices, pins the bundled .NET/Windows Desktop to 8.0.31, and strengthens the packaging checks. Character features are unchanged. For the release decision, verification results and follow-ups, see the [release record](docs/RELEASE_READINESS.md).
 
-从 [GitHub Releases](https://github.com/nicedoctors/JiuNuoDesktopPet/releases/latest) 下载标注为“JiuNuoDesktopPet-Portable”的 ZIP，完整解压后运行根目录 `JiuNuoDesktopPet.exe`。公开源码位于本仓库，使用独立历史，不包含原私有仓库的旧提交或 PR 引用。
+Download the ZIP labeled "JiuNuoDesktopPet-Portable" from [GitHub Releases](https://github.com/nicedoctors/JiuNuoDesktopPet/releases/latest), extract it completely, and run `JiuNuoDesktopPet.exe` in the root folder. The public source code lives in this repository with its own history; it does not include old commits or PR references from the original private repository.
 
-### 从源码运行
+### Run from source
 
 ```powershell
 git clone https://github.com/nicedoctors/JiuNuoDesktopPet.git
@@ -60,128 +60,128 @@ cd JiuNuoDesktopPet
 .\run.ps1
 ```
 
-也可以直接使用 .NET CLI：
+You can also use the .NET CLI directly:
 
 ```powershell
 dotnet run --project .\src\SoftMochiPet\SoftMochiPet.csproj -c Release
 ```
 
-### 生成免安装包
+### Build the portable package
 
 ```powershell
 .\package.ps1
 ```
 
-完成后会生成：
+When it finishes, it produces:
 
 ```text
 dist\JiuNuoDesktopPet-Portable\
 dist\JiuNuoDesktopPet-Portable.zip
 ```
 
-将 ZIP 完整解压后，双击根目录的 `JiuNuoDesktopPet.exe` 即可。正式包根目录只有这一个启动入口；`app` 子目录包含程序运行所需内容，不能与启动器分开移动。专属测试入口仅保留在源码和开发构建中，不随正式包发布。
+Fully extract the ZIP, then double-click `JiuNuoDesktopPet.exe` in the root folder. The release package root has only this one launcher; the `app` subfolder contains everything the program needs to run and must not be moved apart from the launcher. The exclusive test launcher is kept only in the source code and development builds and is not shipped in the release package.
 
-更多构建命令和打包说明见 [开发指南](docs/DEVELOPMENT.md)。
+For more build commands and packaging notes, see the [development guide](docs/DEVELOPMENT.md).
 
-### 菲比独立专属功能演示
+### Feibi's standalone Exclusive Feature Test
 
-专属测试入口仅用于开发构建，不包含在正式免安装包中。需要运行时请从源码构建测试启动器，或使用单独的开发测试目录；正式包只提供日常桌宠入口。
+The exclusive test launcher is only for development builds and is not included in the official portable package. If you need to run it, build the test launcher from source or use a separate development test folder; the release package only provides the everyday desktop pet launcher.
 
-## 基本操作
+## Basic controls
 
-| 操作 | 效果 |
+| Action | Effect |
 | --- | --- |
-| 左键按住糯糯并移动 | 拖动；自主巡游会立即暂停 |
-| 缓慢松开左键 | 轻柔放下，随后落到最近的可用地形 |
-| 快速松开左键 | 按手势末速度甩出或上抛 |
-| 把糯糯放进普通窗口内部 | 进入封闭容器，随窗口四壁碰撞和弹跳；删除事件会让她跑出去进食 |
-| 从左右移动普通窗口撞她 | 按窗口的撞击方向飞出 |
-| 右键糯糯 | 打开与托盘入口相同的菜单 |
-| 菜单“桌宠角色” | 选择糯糯或菲比啾比；正在拖动或吃东西时延后切换 |
-| 菜单“双宠共存” | 同时显示两人；再次点击恢复单人模式，选择“桌宠角色”也会切回单人模式 |
-| 菜单“无限模式” | 隐藏两人的头顶进度条，并暂停糯糯的饥饿行为；菲比仍按原有节奏捣蛋 |
-| 拖动菜单中的角色大小滑条 | 在 60%～200% 范围即时缩放并自动保存 |
-| 托盘菜单“开机自启” | 设置或取消随当前 Windows 用户登录启动 |
-| 糯糯菜单“禁食模式” | 隐藏饥饿条、饥饿归零，停止讨食、舔图标和饥饿打滚；菲比没有此项 |
-| 菲比菜单“允许自主捣蛋” | 持久开关，默认开启；旧设置版本为 4 或更早时升级会一次性开启，之后保留手动选择。自主与手动模式均可能作用于兼容的非最大化、非全屏前台窗口，不限于普通窗口 |
-| 菲比菜单“捣蛋一下” / “逗逗她” | 主动体验窗口玩法 / 增加捣蛋条，完整素材就绪后使用 |
-| 菲比菜单“把窗口还回来” | 主动恢复帽中、碎裂或撕裂的窗口；不会按时间自动归还 |
-| 托盘菜单“安静模式” | 停止自主走动、进食和捣蛋，仅待机或睡觉；已收起的窗口继续保留，仍可右键恢复 |
-| 双击托盘入口 | 让糯糯回到当前可见工作区 |
-| 托盘菜单“禁音” | 立即关闭或恢复角色语音 |
-| 托盘菜单“退出桌宠” | 保存生活状态并退出 |
+| Hold the left button on Nuonuo and move | Drag her; autonomous roaming pauses immediately |
+| Release the left button slowly | Gently set her down; she then drops to the nearest usable terrain |
+| Release the left button quickly | Fling or toss her using the gesture's final speed |
+| Put Nuonuo inside an ordinary window | She enters an enclosure and collides and bounces off the window walls; a deletion event makes her run out to eat |
+| Move an ordinary window sideways into her | She flies off in the direction of the impact |
+| Right-click Nuonuo | Opens the same menu as the tray icon |
+| Menu "Pet Character" | Choose Nuonuo or Feibi Jiubi; switching is delayed while she is being dragged or eating |
+| Menu "Both Pets Together" | Show both at once; click again to go back to a single pet, and choosing "Pet Character" also returns to single-pet mode |
+| Menu "Infinite Mode" | Hides both progress bars above their heads and pauses Nuonuo's hunger behavior; Feibi keeps making mischief at her usual pace |
+| Drag the character size slider in the menu | Scales instantly within 60%–200% and saves automatically |
+| Tray menu "Start with Windows" | Turns starting when the current Windows user signs in on or off |
+| Nuonuo's menu "Fasting Mode" | Hides the hunger bar, resets hunger to zero, and stops begging for food, licking icons and rolling from hunger; Feibi has no such option |
+| Feibi's menu "Allow Autonomous Mischief" | A persistent switch, on by default; if your old settings version was 4 or earlier, the upgrade turns it on once, and your manual choice is kept afterwards. Both autonomous and manual mode may act on any compatible foreground window that is not maximized or full screen, not only ordinary windows |
+| Feibi's menu "Make Mischief Now" / "Tease Her" | Try the window gameplay yourself / raise the mischief bar; used once the full asset set is ready |
+| Feibi's menu "Give the Windows Back" | Restores a window held in the hat, shattered or torn; it is never returned on a timer |
+| Tray menu "Quiet Mode" | Stops autonomous walking, eating and mischief, leaving only idling or sleeping; stashed windows stay held and can still be restored with a right-click |
+| Double-click the tray icon | Brings Nuonuo back to the currently visible work area |
+| Tray menu "Mute" | Turns character voices off or back on immediately |
+| Tray menu "Exit Desktop Pet" | Saves the life state and exits |
 
-普通删除操作进入回收站后，糯糯会在捕获到原始桌面位置时前往进食。监听失败不会影响文件本身，也不会拦截或改变系统的删除流程。
+After a normal delete sends an item to the Recycle Bin, Nuonuo goes to eat it if the original desktop position was captured. If watching fails, the file itself is unaffected, and the system's delete flow is never intercepted or changed.
 
-窗口持有期间，安静、回家、尺寸调节及跨屏拖动不会自行恢复目标。切换角色、退出、锁屏、休眠或真实显示布局/工作区变化会安全归还，避免窗口遗留；这与日常按时间自动恢复不同。
+While a window is being held, Quiet Mode, going home, resizing and dragging across screens do not restore it on their own. Switching characters, exiting, locking the screen, sleeping the PC, or a real change in display layout or work area returns it safely so no window is left behind; this differs from everyday timed automatic restoring.
 
-## 开发与测试
+## Development and testing
 
 ```powershell
-# Release 构建
+# Release build
 .\build.ps1
 
-# 运行无界面逻辑测试
+# Run the headless logic tests
 dotnet run --project .\tests\SoftMochiPet.LogicTests\SoftMochiPet.LogicTests.csproj -c Release
 
-# 生成自包含的 Windows x64 目录版
+# Produce the self-contained Windows x64 folder build
 .\publish.ps1
 
 ```
 
-逻辑测试覆盖物理、尺寸、巡游、糯糯进食、角色隔离、捣蛋冷却和动画事件；生产素材检查真解码每个角色的全部必需帧，并核对真实接触点、帽子遮罩和哈希。当前验收结果见 [角色进度](docs/CHARACTERS.md#当前进度与阶段退出条件)，涉及外部窗口、Explorer、视觉及混合 DPI 的效果由用户按 [手工清单](SELF_TEST.md) 验证。
+The logic tests cover physics, size, roaming, Nuonuo's eating, character isolation, mischief cooldowns and animation events; the production asset checks truly decode every required frame of each character and verify real contact points, hat masks and hashes. For current acceptance results see [Character progress](docs/CHARACTERS.md#current-progress-and-phase-exit-criteria); effects involving external windows, Explorer, visuals and mixed DPI are verified by the user with the [manual checklist](SELF_TEST.md).
 
-## 项目结构
+## Project structure
 
 ```text
 NuonuoDesktopPet/
-├─ src/SoftMochiPet/              WPF 主程序
-│  ├─ Core/                       状态机、物理和行为策略
-│  ├─ Interop/                    Win32 互操作声明
-│  ├─ Models/                     设置与生活状态
-│  └─ Services/                   桌面、日志、声音和文件监听服务
-├─ tests/SoftMochiPet.LogicTests/ 无界面逻辑测试
-├─ launcher/                      免安装包原生启动器
-├─ packaging/                     便携版说明文件
-├─ docs/                          功能与开发文档
-└─ *.ps1                          构建、运行和发布脚本
+├─ src/SoftMochiPet/              WPF main program
+│  ├─ Core/                       State machines, physics and behavior policies
+│  ├─ Interop/                    Win32 interop declarations
+│  ├─ Models/                     Settings and life state
+│  └─ Services/                   Desktop, logging, sound and file-watching services
+├─ tests/SoftMochiPet.LogicTests/ Headless logic tests
+├─ launcher/                      Native launcher for the portable package
+├─ packaging/                     Portable-edition instruction files
+├─ docs/                          Feature and development docs
+└─ *.ps1                          Build, run and publish scripts
 ```
 
-## 数据、日志与隐私
+## Data, logs and privacy
 
-啾糯桌宠只在当前 Windows 用户目录保存运行数据：
+JiuNuo Desktop Pet stores runtime data only in the current Windows user's folders:
 
-| 内容 | 路径 |
+| Content | Path |
 | --- | --- |
-| 设置 | `%APPDATA%\SoftMochiPet\settings.json` |
-| 生活状态 | `%APPDATA%\SoftMochiPet\life-state.json` |
-| 菲比角色数据 | 见 [角色数据边界](docs/CHARACTERS.md#角色与数据边界)；独立保存生活与捣蛋状态 |
-| 诊断日志 | `%LOCALAPPDATA%\SoftMochiPet\activity.log` |
-| 上一份轮转日志 | `%LOCALAPPDATA%\SoftMochiPet\activity.previous.log` |
+| Settings | `%APPDATA%\SoftMochiPet\settings.json` |
+| Life state | `%APPDATA%\SoftMochiPet\life-state.json` |
+| Feibi's character data | See [Character data boundaries](docs/CHARACTERS.md#characters-and-data-boundaries); her life and mischief state are saved separately |
+| Diagnostic log | `%LOCALAPPDATA%\SoftMochiPet\activity.log` |
+| Previous rotated log | `%LOCALAPPDATA%\SoftMochiPet\activity.previous.log` |
 
-“开机自启”使用当前用户的 `HKCU\Software\Microsoft\Windows\CurrentVersion\Run` 启动项；关闭选项后会移除该项目。
+"Start with Windows" uses the current user's `HKCU\Software\Microsoft\Windows\CurrentVersion\Run` entry; turning the option off removes that entry.
 
-### 正式更名与旧版兼容
+### Official rename and legacy compatibility
 
-产品名、窗口/托盘标题及 EXE、DLL 发布名统一为“啾糯桌宠”；角色仍叫“糯糯”和“菲比啾比”。为继续读取已有设置与两角色存档，保留 `SoftMochiPet` 数据/日志目录、内部命名空间、单实例互斥量与激活事件，以及 Windows Run 值名。不会另建一份新品牌存档或启动项，也不重命名原图、录音或角色 ID。
+The product name and window/tray titles are "JiuNuo Desktop Pet", and the released EXE and DLL are named `JiuNuoDesktopPet`; the characters are still called "Nuonuo" and "Feibi Jiubi". To keep reading existing settings and both characters' save data, the `SoftMochiPet` data/log folder, internal namespaces, the single-instance mutex and activation event, and the Windows Run value name are all kept. No separate new-brand save data or startup entry is created, and the original images and character IDs are not renamed; the voice recordings were given English file names as part of the English translation, with the same audio content.
 
-升级时先退出旧版，再完整解压到新文件夹；不要只替换 EXE 或把新旧“app”混在一起。旧版开机自启命令不会被静默修改；需要使用新版本自启时，在新版本菜单重新勾选“开机自启”，原 Run 值会更新为新入口。仓库地址与源码项目文件名保持不变，不代表发行文件仍使用旧品牌。
+When upgrading, exit the old version first, then extract the complete package to a new folder; do not replace only the EXE or mix old and new "app" folders. An old version's startup command is never changed silently; to have the new version start with Windows, re-check "Start with Windows" in the new version's menu, and the existing Run value is updated to the new launcher. The repository URL and source project file names stay the same, which does not mean the release files still use the old brand.
 
-日志达到 8 MB 后轮转，记录行为状态、窗口地形、显示器参数和事件关联编号。v1.3.2 起不写入完整文件路径、文件显示名或窗口标题，异常保留类型、错误码与调用位置，不保存原始异常消息。旧版日志、截图及录屏仍需在公开前人工检查。公开署名、素材元数据与历史处理规则见 [隐私与公开边界](docs/PRIVACY.md)。
+The log rotates at 8 MB and records behavior states, window terrain, monitor parameters and event correlation IDs. Since v1.3.2 it no longer writes full file paths, file display names or window titles; exceptions keep their type, error code and call site, and raw exception messages are not saved. Logs, screenshots and screen recordings from older versions still need a manual check before being made public. For public attribution, asset metadata and historical handling rules, see [Privacy and public boundaries](docs/PRIVACY.md).
 
-## 已知限制
+## Known limitations
 
-- 当前发布包没有 Authenticode 数字签名，Windows 可能显示“未知发布者”。
-- 桌面项目定位依赖 Windows Explorer 的当前实现；Explorer 重启、第三方桌面管理工具或非标准删除流程可能导致进食互动没有触发。
-- 混合 DPI、显示器热插拔和非常规任务栏布局已纳入适配，但仍属于重点测试区域。
-- 仓库暂未提供自动更新器，也不会在后台检查版本。
+- The current release packages have no Authenticode signature, so Windows may show "Unknown publisher".
+- Locating desktop items depends on Windows Explorer's current implementation; restarting Explorer, third-party desktop managers or non-standard delete flows may keep the eating interaction from triggering.
+- Mixed DPI, monitor hot-plugging and unusual taskbar layouts are handled, but remain areas of focused testing.
+- The repository does not yet provide an automatic updater and never checks for versions in the background.
 
-遇到问题时，请附上 Windows 版本、显示器布局与缩放比例、复现步骤，以及脱敏后的 `activity.log`。详细格式见 [贡献指南](CONTRIBUTING.md)。
+When you run into a problem, please attach your Windows version, monitor layout and scaling, the steps to reproduce, and a sanitized `activity.log`. See the [contributing guide](CONTRIBUTING.md) for the detailed format.
 
-## 贡献
+## Contributing
 
-欢迎提交 Bug 报告、复现日志和改进建议。提交代码前请先阅读 [CONTRIBUTING.md](CONTRIBUTING.md)，并确保逻辑测试通过；不要提交 `dist`、`bin`、`obj`、临时日志或包含个人路径的数据。
+Bug reports, reproduction logs and suggestions are welcome. Before submitting code, please read [CONTRIBUTING.md](CONTRIBUTING.md) and make sure the logic tests pass; do not commit `dist`, `bin`, `obj`, temporary logs or data containing personal paths.
 
-## 许可证
+## License
 
-代码许可与素材范围见本页 [许可与素材](#许可与素材)。分发时须保留 [LICENSE](LICENSE)、[NOTICE](NOTICE) 和适用的第三方声明；素材授权状态见 [ASSET_RIGHTS.md](ASSET_RIGHTS.md)。
+For the code license and asset scope, see [License and assets](#license-and-assets) on this page. When distributing, you must keep [LICENSE](LICENSE), [NOTICE](NOTICE) and the applicable third-party notices; for asset licensing status, see [ASSET_RIGHTS.md](ASSET_RIGHTS.md).

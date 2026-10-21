@@ -1,24 +1,24 @@
-# 鼠标捏脸
+# Mouse cheek pinching
 
-状态、版本和实测待办统一见[当前进度](CHARACTERS.md#当前进度与阶段退出条件)。双人“菲比揪糯糯”不在本次重做范围。
+For status, versions and outstanding hands-on checks, see [Current progress](CHARACTERS.md#current-progress-and-phase-exit-criteria). The two-person "Feibi pinches Nuonuo" is not part of this rework.
 
-## 已采用的表现
+## Adopted behavior
 
-2026-09-29：两角色使用固定待机第 0 帧绑定连续脸颊轮廓、眼睛压缩和眯眼表情、短促张嘴及牙齿。左键命中脸颊后，脸颊按鼠标位移拉长并可上下提拉；最大水平手势 105 个素材像素对应轮廓延伸 64 像素，竖直手势 42 对应轮廓位移 26 像素。渐变肤色、圆润抓握点和腮红沿拉伸轮廓表现。保持较大外拉约 0.28 秒后周期张合嘴；身体围绕原站立位置小幅倾斜（最多 3.5°），不改变窗口尺寸或整体缩放。
+2026-09-29: both characters bind a continuous cheek outline, eye compression and a squinting expression, a brief open mouth and teeth to the fixed idle frame 0. When the left button hits a cheek, the cheek stretches with the mouse movement and can be pulled up or down; the maximum horizontal gesture of 105 asset pixels maps to a 64-pixel outline extension, and a vertical gesture of 42 maps to a 26-pixel outline shift. The gradient skin tone, rounded grip point and blush follow the stretched outline. Holding a large outward pull for about 0.28 seconds makes the mouth open and close periodically; the body tilts slightly around its original standing position (at most 3.5°) without changing the window size or overall scale.
 
-松手从当前形变回弹，不切换另一套全身动作，不叠化两个身体。弹簧在 30/60/120 Hz 下有界收敛。头顶、帽子、衣服和脚的原始像素保留，脸部绘制限制在固定画布，运行时复用离屏位图。左右脸各有独立锚点，人物不会因选择右脸而整身镜像。
+On release, it springs back from the current deformation without switching to another full-body animation or cross-fading two bodies. The spring converges with bounded overshoot at 30/60/120 Hz. The original pixels of the head top, hat, clothes and feet are kept, face drawing is confined to a fixed canvas, and an off-screen bitmap is reused at runtime. The left and right cheeks have separate anchors, so the character is never mirrored as a whole just because the right cheek was chosen.
 
-参考为用户提供的“水手服优米”视频，学习其横向拉脸、受拉眯眼、持续张嘴与回弹节奏。实现是本项目固定立绘的局部矢量绑定，不是参考游戏的底层实现或手臂骨骼；**不能标记为一比一复现**，实际手感和可爱程度待用户验收。该效果由连续参数驱动，故不新增 AI 序列帧；没有把旧生成图再次送入图像模型。
+The reference is the "sailor-uniform Yumi" video provided by the user, studying its sideways cheek pull, squinting under the pull, sustained open mouth and rebound rhythm. The implementation is a local vector rig on this project's fixed character art, not the reference game's underlying implementation or arm skeleton; it **must not be labeled a one-to-one recreation**, and the actual feel and cuteness await user acceptance. The effect is driven by continuous parameters, so no new AI sprite frames were added, and no old generated image was fed back into an image model.
 
-## 交互与维护
+## Interaction and maintenance
 
-- 左键命中脸颊可打断待机、好奇、睡眠或普通奔跑；身体与帽子仍走原拖拽流程，进食目标先回到队列。捣蛋、攀爬、坠落等动作不抢占。
-- 位移取窗口本地坐标，按当前朝向换算，不随脸部和身体倾斜反馈漂移。失去鼠标捕获、菜单、切换、回家、尺寸和显示环境变化时释放手势。
-- `CheekPinchDynamics` 维护弹簧和嘴部节律；`CheekPinchFrameRenderer` 维护两张立绘的轮廓、表情掩膜和复用缓存，`MainWindow.CheekPinch.cs` 处理鼠标和身体姿态。维护责任在本项目；没有通用动画框架或新增依赖。
-- 底图来自各角色 `runtime/idle/frame_00.png`。旧 `runtime/pinch`、`pinch_right` 与来源素材留在源码中，不进入发布包。后续 AI 美术制作仍须从各角色 `original.png` 重新完整生成，不能输入生成表。
+- A left-button hit on a cheek can interrupt idling, curiosity, sleep or ordinary running; the body and hat still use the original drag flow, and eating targets go back into the queue first. Mischief, climbing, falling and similar actions are not preempted.
+- Displacement uses window-local coordinates converted for the current facing, so it does not drift with feedback from the face and body tilt. The gesture is released on losing mouse capture, menus, switching, going home, resizing and display-environment changes.
+- `CheekPinchDynamics` maintains the spring and the mouth rhythm; `CheekPinchFrameRenderer` maintains the outlines, expression masks and reuse cache of both character images, and `MainWindow.CheekPinch.cs` handles the mouse and body pose. Maintenance responsibility lies with this project; there is no general animation framework and no new dependency.
+- The base images come from each character's `runtime/idle/frame_00.png`. The old `runtime/pinch` and `pinch_right` and their source assets stay in the source code and do not go into the release package. Any later AI art production must still be fully regenerated from each character's `original.png`; generated sheets must never be used as input.
 
-## 验收证据
+## Acceptance evidence
 
-后台检查两侧命中、身体拖拽边界、30/60/120 Hz 回弹、画布/非脸部像素保持、缓存复用和全部运行素材。预览由实际 C# 渲染器输出：[拉动—保持—松手](media/pinch-continuity-v131.gif)。它展示脸部绘制，不模拟真人输入或桌面窗口；没有启动桌宠、录屏或播放声音。
+Background checks cover hits on both sides, the body-drag boundary, rebound at 30/60/120 Hz, preservation of the canvas and non-face pixels, cache reuse and all runtime assets. The preview is output by the actual C# renderer: [pull—hold—release](media/pinch-continuity-v131.gif). It shows the face drawing and does not simulate real input or desktop windows; the desktop pet was not started, the screen was not recorded and no sound was played.
 
-按 [SELF_TEST.md](../SELF_TEST.md#v131-四项修复待用户实测) 验收两位角色的左右脸、轻拉/长拉、上下拖动、松手、反向站立和不同 DPI。
+Use [SELF_TEST.md](../SELF_TEST.md#v131-four-fixes-awaiting-user-testing) to accept both characters' left and right cheeks, light/long pulls, vertical dragging, release, reversed facing and different DPI settings.
