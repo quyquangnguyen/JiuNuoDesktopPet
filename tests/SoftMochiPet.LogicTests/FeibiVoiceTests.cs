@@ -3,12 +3,12 @@ using SoftMochiPet.Core;
 
 internal static class FeibiVoiceTests
 {
-    private const string RetainedFallFile = "菲比啾比_坠落.wav";
+    private const string RetainedFallFile = "feibijiubi_falling.wav";
 
     private static readonly string[] NumberedFiles =
     [
-        "菲比啾比_001.wav", "菲比啾比_004.wav", "菲比啾比_006.wav", "菲比啾比_014.wav",
-        "菲比啾比_017.wav", "菲比啾比_034.wav", "菲比啾比_039.wav", "菲比啾比_041.wav", "菲比啾比_047.wav",
+        "feibijiubi_001.wav", "feibijiubi_004.wav", "feibijiubi_006.wav", "feibijiubi_014.wav",
+        "feibijiubi_017.wav", "feibijiubi_034.wav", "feibijiubi_039.wav", "feibijiubi_041.wav", "feibijiubi_047.wav",
     ];
 
     public static void VoiceDirectoriesAndCatalogsRemainCharacterSpecific()
@@ -21,10 +21,10 @@ internal static class FeibiVoiceTests
             "Feibi's directory must not redirect Nuonuo's legacy recordings.");
         foreach (var cue in Enum.GetValues<VoiceCue>())
         {
-            Assert(VoiceCueCatalog.GetFileNames(cue, feibi).All(file => file.StartsWith("菲比啾比_", StringComparison.Ordinal)),
+            Assert(VoiceCueCatalog.GetFileNames(cue, feibi).All(file => file.StartsWith("feibijiubi_", StringComparison.Ordinal)),
                 $"Feibi must never borrow Nuonuo's recording for {cue}.");
             Assert(VoiceCueCatalog.GetFileNames(cue, nuonuo).SequenceEqual(VoiceCueCatalog.GetFileNames(cue)) &&
-                VoiceCueCatalog.GetFileNames(cue).All(file => file.StartsWith("糯糯_", StringComparison.Ordinal)),
+                VoiceCueCatalog.GetFileNames(cue).All(file => file.StartsWith("nuonuo_", StringComparison.Ordinal)),
                 $"The default and explicit Nuonuo voice routing must remain identical for {cue}.");
         }
         Assert(!VoiceCueCatalog.AllFileNamesFor(feibi).Intersect(VoiceCueCatalog.AllFileNamesFor(nuonuo)).Any(),
@@ -56,8 +56,8 @@ internal static class FeibiVoiceTests
         var neutral = FeibiVoiceCatalog.GetFileNames(VoiceCue.Neutral);
         Assert(NumberedFiles.All(neutral.Contains) && neutral.Count == 12,
             "Daily chatter must include all nine confirmed numbered recordings plus the three named variants.");
-        Assert(neutral.Contains("菲比啾比_正常.wav") && neutral.Contains("菲比啾比_小声平静嘟哝.wav") &&
-            neutral.Contains("菲比啾比_菲八啾比.wav"),
+        Assert(neutral.Contains("feibijiubi_normal.wav") && neutral.Contains("feibijiubi_quiet_calm_mumble.wav") &&
+            neutral.Contains("feibijiubi_feiba_jiubi.wav"),
             "Adding numbered recordings must preserve the existing named daily variants.");
         var fresh = VoicePlaybackPolicy.GetFreshFiles(neutral, new Dictionary<string, DateTimeOffset>(), DateTimeOffset.UtcNow);
         Assert(NumberedFiles.All(fresh.Contains), "Every numbered daily recording must be eligible before first use.");
@@ -82,21 +82,21 @@ internal static class FeibiVoiceTests
 
     public static void FeibiEmotionAndPrankCuesUseAppropriateNamedRecordings()
     {
-        Assert(FeibiVoiceCatalog.GetFileNames(VoiceCue.Calm).SequenceEqual(["菲比啾比_困倦.wav"]) &&
-            FeibiVoiceCatalog.GetFileNames(VoiceCue.Question).SequenceEqual(["菲比啾比_疑惑.wav"]) &&
-            FeibiVoiceCatalog.GetFileNames(VoiceCue.Landing).SequenceEqual(["菲比啾比_委屈.wav", "菲比啾比_小声平静嘟哝.wav"]),
+        Assert(FeibiVoiceCatalog.GetFileNames(VoiceCue.Calm).SequenceEqual(["feibijiubi_sleepy.wav"]) &&
+            FeibiVoiceCatalog.GetFileNames(VoiceCue.Question).SequenceEqual(["feibijiubi_puzzled.wav"]) &&
+            FeibiVoiceCatalog.GetFileNames(VoiceCue.Landing).SequenceEqual(["feibijiubi_aggrieved.wav", "feibijiubi_quiet_calm_mumble.wav"]),
             "Sleep, curiosity, and landing must retain their existing named recordings.");
-        Assert(FeibiVoiceCatalog.GetFileNames(MischiefCue.Sneak).Contains("菲比啾比_悄悄话.wav") &&
-            FeibiVoiceCatalog.GetFileNames(MischiefCue.HideWindow).Contains("菲比啾比_悄悄话.wav") &&
+        Assert(FeibiVoiceCatalog.GetFileNames(MischiefCue.Sneak).Contains("feibijiubi_whisper.wav") &&
+            FeibiVoiceCatalog.GetFileNames(MischiefCue.HideWindow).Contains("feibijiubi_whisper.wav") &&
             FeibiVoiceCatalog.GetFileNames(MischiefCue.Burst).SequenceEqual([FeibiVoiceCatalog.BurstCallFileName]) &&
-            FeibiVoiceCatalog.GetFileNames(MischiefCue.Tear).SequenceEqual(["菲比啾比_咬牙切齿.wav"]) &&
-            FeibiVoiceCatalog.GetFileNames(MischiefCue.Interrupted).Contains("菲比啾比_委屈.wav"),
+            FeibiVoiceCatalog.GetFileNames(MischiefCue.Tear).SequenceEqual(["feibijiubi_gritting_teeth.wav"]) &&
+            FeibiVoiceCatalog.GetFileNames(MischiefCue.Interrupted).Contains("feibijiubi_aggrieved.wav"),
             "Sneaking, hiding, tearing, and interruption retain their emotional choices; the burst uses its fixed opening line.");
     }
 
     public static void BurstCallUsesOnlyTheRequestedOriginalRecording()
     {
-        Assert(FeibiVoiceCatalog.BurstCallFileName == "菲比啾比_菲八啾比.wav" &&
+        Assert(FeibiVoiceCatalog.BurstCallFileName == "feibijiubi_feiba_jiubi.wav" &&
             FeibiVoiceCatalog.GetFileNames(MischiefCue.Burst).SequenceEqual([FeibiVoiceCatalog.BurstCallFileName]),
             "A full mischief meter must use the exact requested line, with no random alternative.");
         var path = Path.Combine(AppContext.BaseDirectory, PetCharacterProfile.FeibiJiubi.VoiceRelativeDirectory,
@@ -160,7 +160,7 @@ internal static class FeibiVoiceTests
         var started = DateTimeOffset.UnixEpoch.AddMinutes(1);
         var history = new Dictionary<string, DateTimeOffset>(StringComparer.OrdinalIgnoreCase)
         {
-            ["菲比啾比_积极.wav"] = started,
+            ["feibijiubi_positive.wav"] = started,
         };
         Assert(VoicePlaybackPolicy.MinimumFileRepeatInterval == TimeSpan.FromSeconds(12),
             "Shared recordings must retain the 12-second per-file repeat guard.");
@@ -171,8 +171,8 @@ internal static class FeibiVoiceTests
             FeibiVoiceCatalog.GetFileNames(MischiefCue.Charge),
         })
         {
-            Assert(!VoicePlaybackPolicy.GetFreshFiles(files, history, started.AddSeconds(11.999)).Contains("菲比啾比_积极.wav") &&
-                VoicePlaybackPolicy.GetFreshFiles(files, history, started.AddSeconds(12)).Contains("菲比啾比_积极.wav"),
+            Assert(!VoicePlaybackPolicy.GetFreshFiles(files, history, started.AddSeconds(11.999)).Contains("feibijiubi_positive.wav") &&
+                VoicePlaybackPolicy.GetFreshFiles(files, history, started.AddSeconds(12)).Contains("feibijiubi_positive.wav"),
                 "Changing from daily speech to a prank must not bypass a shared recording's repeat timer.");
         }
         var rotation = VoicePlaybackPolicy.GetRotationCandidates(FeibiVoiceCatalog.GetFileNames(VoiceCue.Neutral),

@@ -50,7 +50,7 @@
 
 当前版本为 **v1.3.3**，加入非商业代码许可、素材来源说明和第三方声明，固定内置 .NET/Windows Desktop 8.0.31，并加强打包检查。角色功能保持不变。发布决定、验证结果与后续事项见 [发布记录](docs/RELEASE_READINESS.md)。
 
-从 [GitHub Releases](https://github.com/nicedoctors/JiuNuoDesktopPet/releases/latest) 下载标注为“啾糯桌宠-免安装版”的 ZIP，完整解压后运行根目录 `啾糯桌宠.exe`。公开源码位于本仓库，使用独立历史，不包含原私有仓库的旧提交或 PR 引用。
+从 [GitHub Releases](https://github.com/nicedoctors/JiuNuoDesktopPet/releases/latest) 下载标注为“JiuNuoDesktopPet-Portable”的 ZIP，完整解压后运行根目录 `JiuNuoDesktopPet.exe`。公开源码位于本仓库，使用独立历史，不包含原私有仓库的旧提交或 PR 引用。
 
 ### 从源码运行
 
@@ -75,11 +75,11 @@ dotnet run --project .\src\SoftMochiPet\SoftMochiPet.csproj -c Release
 完成后会生成：
 
 ```text
-dist\啾糯桌宠-免安装版\
-dist\啾糯桌宠-免安装版.zip
+dist\JiuNuoDesktopPet-Portable\
+dist\JiuNuoDesktopPet-Portable.zip
 ```
 
-将 ZIP 完整解压后，双击根目录的 `啾糯桌宠.exe` 即可。正式包根目录只有这一个启动入口；`程序文件` 子目录包含程序运行所需内容，不能与启动器分开移动。专属测试入口仅保留在源码和开发构建中，不随正式包发布。
+将 ZIP 完整解压后，双击根目录的 `JiuNuoDesktopPet.exe` 即可。正式包根目录只有这一个启动入口；`app` 子目录包含程序运行所需内容，不能与启动器分开移动。专属测试入口仅保留在源码和开发构建中，不随正式包发布。
 
 更多构建命令和打包说明见 [开发指南](docs/DEVELOPMENT.md)。
 
@@ -165,7 +165,7 @@ NuonuoDesktopPet/
 
 产品名、窗口/托盘标题及 EXE、DLL 发布名统一为“啾糯桌宠”；角色仍叫“糯糯”和“菲比啾比”。为继续读取已有设置与两角色存档，保留 `SoftMochiPet` 数据/日志目录、内部命名空间、单实例互斥量与激活事件，以及 Windows Run 值名。不会另建一份新品牌存档或启动项，也不重命名原图、录音或角色 ID。
 
-升级时先退出旧版，再完整解压到新文件夹；不要只替换 EXE 或把新旧“程序文件”混在一起。旧版开机自启命令不会被静默修改；需要使用新版本自启时，在新版本菜单重新勾选“开机自启”，原 Run 值会更新为新入口。仓库地址与源码项目文件名保持不变，不代表发行文件仍使用旧品牌。
+升级时先退出旧版，再完整解压到新文件夹；不要只替换 EXE 或把新旧“app”混在一起。旧版开机自启命令不会被静默修改；需要使用新版本自启时，在新版本菜单重新勾选“开机自启”，原 Run 值会更新为新入口。仓库地址与源码项目文件名保持不变，不代表发行文件仍使用旧品牌。
 
 日志达到 8 MB 后轮转，记录行为状态、窗口地形、显示器参数和事件关联编号。v1.3.2 起不写入完整文件路径、文件显示名或窗口标题，异常保留类型、错误码与调用位置，不保存原始异常消息。旧版日志、截图及录屏仍需在公开前人工检查。公开署名、素材元数据与历史处理规则见 [隐私与公开边界](docs/PRIVACY.md)。
 

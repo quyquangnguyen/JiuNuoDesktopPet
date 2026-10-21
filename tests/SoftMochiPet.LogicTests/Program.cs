@@ -453,8 +453,8 @@ static void IdleNameCallsStayWithinRequestedInterval()
 static void StartupRegistrationSelectsPortableLauncher()
 {
     var root = Path.Combine(Path.GetTempPath(), $"SoftMochiPet-startup-{Guid.NewGuid():N}");
-    var programDirectory = Path.Combine(root, "程序文件");
-    var launcher = Path.Combine(root, "啾糯桌宠.exe");
+    var programDirectory = Path.Combine(root, "app");
+    var launcher = Path.Combine(root, "JiuNuoDesktopPet.exe");
     var legacyLauncher = Path.Combine(root, "糯糯桌宠.exe");
     var fallback = Path.Combine(programDirectory, "internal.exe");
     try
@@ -1296,7 +1296,7 @@ static void VoiceCatalogCoversEveryPackagedRecording()
     var airborne = VoiceCueCatalog.GetFileNames(VoiceCue.Scream);
     Assert(airborne.Count >= 7,
         "Frequent airborne reactions need a broad rotation instead of alternating between two files.");
-    Assert(!airborne.Contains("糯糯_惊叫.wav", StringComparer.OrdinalIgnoreCase),
+    Assert(!airborne.Contains("nuonuo_scream.wav", StringComparer.OrdinalIgnoreCase),
         "The excessively sharp original scream must stay out of airborne playback.");
 }
 
@@ -1305,11 +1305,11 @@ static void VoiceFilesCannotImmediatelyRepeat()
     var startedAt = new DateTimeOffset(2026, 8, 28, 12, 0, 0, TimeSpan.Zero);
     var lastStarted = new Dictionary<string, DateTimeOffset>(StringComparer.OrdinalIgnoreCase)
     {
-        ["糯糯_委屈.wav"] = startedAt,
+        ["nuonuo_aggrieved.wav"] = startedAt,
     };
-    var files = new[] { "糯糯_委屈.wav", "糯糯_有点委屈.wav" };
+    var files = new[] { "nuonuo_aggrieved.wav", "nuonuo_slightly_aggrieved.wav" };
     var fresh = VoicePlaybackPolicy.GetFreshFiles(files, lastStarted, startedAt.AddSeconds(2));
-    Assert(fresh.Count == 1 && fresh[0] == "糯糯_有点委屈.wav",
+    Assert(fresh.Count == 1 && fresh[0] == "nuonuo_slightly_aggrieved.wav",
         "A recently played recording must be excluded while a fresh alternative exists.");
 
     var afterCooldown = VoicePlaybackPolicy.GetFreshFiles(
@@ -1326,9 +1326,9 @@ static void VoiceFilesCannotImmediatelyRepeat()
 
     var rotated = VoicePlaybackPolicy.GetRotationCandidates(
         afterCooldown,
-        previousFileForCue: "糯糯_委屈.wav",
-        previousFileOverall: "糯糯_冷静.wav");
-    Assert(rotated.Count == 1 && rotated[0] == "糯糯_有点委屈.wav",
+        previousFileForCue: "nuonuo_aggrieved.wav",
+        previousFileOverall: "nuonuo_calm.wav");
+    Assert(rotated.Count == 1 && rotated[0] == "nuonuo_slightly_aggrieved.wav",
         "The same scene must rotate away from its previous recording even when other voices played in between.");
 }
 

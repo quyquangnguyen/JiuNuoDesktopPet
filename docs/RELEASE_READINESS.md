@@ -22,7 +22,7 @@
 - 缺少许可证、携带旧版运行时两种错误包均被验证器拒绝。启动器使用 LLVM-MinGW 编译，其导入表只依赖 Windows 系统组件。
 - Gitleaks 8.30.1 对准备目录的凭据扫描无发现。独立 Git 根历史只保存本次完整源码快照；不包含原仓库历史对象或 PR 引用。扫描只能覆盖现有规则与可访问内容，不构成对任意秘密的绝对保证。
 
-源码位于本仓库，免安装包通过 [v1.3.3 Release](https://github.com/nicedoctors/JiuNuoDesktopPet/releases/tag/v1.3.3) 分发；本地打包路径为 `dist/啾糯桌宠-免安装版.zip`。安装包附带本文件与素材权利记录，附件 SHA-256 记录在 Release 说明及校验文件中。
+源码位于本仓库，免安装包通过 [v1.3.3 Release](https://github.com/nicedoctors/JiuNuoDesktopPet/releases/tag/v1.3.3) 分发；本地打包路径为 `dist/JiuNuoDesktopPet-Portable.zip`。安装包附带本文件与素材权利记录，附件 SHA-256 记录在 Release 说明及校验文件中。
 
 ## 后续事项
 

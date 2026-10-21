@@ -81,11 +81,11 @@ public sealed class PetLifeState
     {
         if (path.EndsWith(".snack", StringComparison.OrdinalIgnoreCase))
         {
-            return "点心";
+            return "Treat";
         }
 
         var extension = Path.GetExtension(path).TrimStart('.').ToLowerInvariant();
-        return string.IsNullOrWhiteSpace(extension) ? "文件夹" : extension;
+        return string.IsNullOrWhiteSpace(extension) ? "Folder" : extension;
     }
 }
 

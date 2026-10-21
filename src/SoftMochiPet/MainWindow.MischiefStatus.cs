@@ -35,20 +35,20 @@ public partial class MainWindow
         var countdown = (int)Math.Ceiling(Math.Max(0, attempt ?? 0));
         var text = reason switch
         {
-            "disabled" => "自主捣蛋已关闭",
-            "session_locked" => "已暂停（锁屏）",
-            "quiet" => "已暂停（安静模式）",
-            "sleeping" => "已暂停（睡觉）",
-            "performing" => _manualRestoreInProgress ? "归还窗口中" : "捣蛋中",
-            "cooldown" => $"冷却中 · {cooldown} 秒",
-            "dragging" => "蓄力中 · 等你松手",
-            "hat_recovery" => "等她戴好帽子",
-            "assets_unavailable" => "动作素材不可用（见日志）",
-            "hat_occupied_full" => "已满 · 等帽子腾空，小捣蛋照常",
-            "no_eligible_window" => $"等待合适窗口 · {countdown} 秒后重试",
-            "enclosed" => "蓄力中 · 等她离开窗口内部",
-            "pet_busy" => "等当前动作结束",
-            _ => $"蓄力中 · {Math.Floor(_mischief.Value):0}/100" + (HasHeldPrank ? " · 帽子已占用" : ""),
+            "disabled" => "Autonomous mischief is off",
+            "session_locked" => "Paused (screen locked)",
+            "quiet" => "Paused (Quiet Mode)",
+            "sleeping" => "Paused (sleeping)",
+            "performing" => _manualRestoreInProgress ? "Returning the window" : "Making mischief",
+            "cooldown" => $"Cooling down · {cooldown}s",
+            "dragging" => "Charging · waiting for you to let go",
+            "hat_recovery" => "Waiting for her to put her hat back on",
+            "assets_unavailable" => "Animation assets unavailable (see log)",
+            "hat_occupied_full" => "Full · waiting for the hat to empty; small mischief continues",
+            "no_eligible_window" => $"Waiting for a suitable window · retrying in {countdown}s",
+            "enclosed" => "Charging · waiting for her to get out of the window",
+            "pet_busy" => "Waiting for the current action to finish",
+            _ => $"Charging · {Math.Floor(_mischief.Value):0}/100" + (HasHeldPrank ? " · hat occupied" : ""),
         };
         _trayIcon.SetMischiefStatus(text);
         if (reason == _lastMischiefStatusReason && now < _nextMischiefStatusLog) return;

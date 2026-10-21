@@ -30,7 +30,7 @@ def measure(spec):
 def main():
     if not FFMPEG:
         raise RuntimeError("FFmpeg is required only for offline asset measurement.")
-    sources = [("nuonuo", f) for f in sorted((ROOT/"音效").glob("*.wav"))]
+    sources = [("nuonuo", f) for f in sorted((ROOT/"sound-effects").glob("*.wav"))]
     sources += [("feibijiubi", f) for f in sorted((ROOT/"assets/characters/feibijiubi/audio").glob("*.wav"))]
     with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
         records = list(pool.map(measure, sources))
@@ -38,7 +38,7 @@ def main():
     reference = statistics.median(r["IntegratedLufs"] for r in records if r["Character"] == "nuonuo")
     target = min(-24, math.floor(reference))
     for r in records:
-        quiet = any(word in r["File"] for word in ["小声","轻声","悄悄话","困倦"])
+        quiet = any(word in r["File"] for word in ["quiet","hushed","whisper","sleepy"])
         desired = target - (3 if quiet else 0)
         gain = min(0, desired-r["IntegratedLufs"], -2-r["TruePeakDbtp"])
         r["GainDb"] = round(gain, 3)

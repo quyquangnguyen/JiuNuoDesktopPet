@@ -5,7 +5,7 @@ import math
 from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "dist" / "双宠日常互动预览"
+OUT = ROOT / "dist" / "pair-daily-life-preview"
 TRACE = ROOT / ".codex-temp/companion-life/ball-trace.json"
 W, H, SIZE, GROUND, FPS = 1080, 580, 240, 500, 20
 FONT = ImageFont.truetype("C:/Windows/Fonts/msyh.ttc", 22)
@@ -99,7 +99,7 @@ def main():
                        duration=50,loop=0,optimize=False,disposal=2)
         chosen={"follow":3.1,"nuzzle":2.8,"ball":7.1,"watch":1.7}[kind]
         contact.paste(frames[round(chosen*FPS)],(0,row*H))
-    contact.resize((810,1740),Image.Resampling.LANCZOS).save(OUT/"四种互动.png")
+    contact.resize((810,1740),Image.Resampling.LANCZOS).save(OUT/"four-interactions.png")
     print(OUT)
 
 

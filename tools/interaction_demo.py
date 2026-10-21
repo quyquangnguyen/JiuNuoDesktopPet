@@ -139,7 +139,7 @@ def make_frames() -> list[Image.Image]:
 
 def main():
     frames = make_frames()
-    gif_path = OUT_DIR / "双宠互动演示-碰面与进食围观.gif"
+    gif_path = OUT_DIR / "pair-interaction-demo-greeting-and-meal-watch.gif"
     mp4_dir = OUT_DIR / "interaction-demo-frames"
     mp4_dir.mkdir(exist_ok=True)
     for index, frame in enumerate(frames):

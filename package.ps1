@@ -8,7 +8,7 @@ $python = if ($env:PYTHON_EXE) { $env:PYTHON_EXE } else { 'python' }
 & $python (Join-Path $projectRoot 'tools\public_privacy.py')
 if ($LASTEXITCODE -ne 0) { throw 'Privacy or license integrity check failed.' }
 $distRoot = [System.IO.Path]::GetFullPath((Join-Path $projectRoot 'dist'))
-$packageName = if ($BehaviorControl) { '啾糯桌宠-行为控制版' } else { '啾糯桌宠-免安装版' }
+$packageName = if ($BehaviorControl) { 'JiuNuoDesktopPet-BehaviorControl' } else { 'JiuNuoDesktopPet-Portable' }
 $packageDirectory = [System.IO.Path]::GetFullPath((Join-Path $distRoot $packageName))
 $archivePath = [System.IO.Path]::GetFullPath((Join-Path $distRoot "$packageName.zip"))
 $distPrefix = $distRoot.TrimEnd([System.IO.Path]::DirectorySeparatorChar) + [System.IO.Path]::DirectorySeparatorChar
@@ -26,28 +26,28 @@ if (-not $stagingRoot.StartsWith($distPrefix, [System.StringComparison]::Ordinal
 }
 $stagingDirectory = Join-Path $stagingRoot $packageName
 $stagingArchive = Join-Path $stagingRoot "$packageName.zip"
-$appDirectory = Join-Path $stagingDirectory '程序文件'
+$appDirectory = Join-Path $stagingDirectory 'app'
 New-Item -ItemType Directory -Path $appDirectory -Force | Out-Null
 
 & $dotnet publish (Join-Path $projectRoot 'src\SoftMochiPet\SoftMochiPet.csproj') `
     -c Release -r win-x64 --self-contained true `
     -p:PublishSingleFile=false `
-    -p:SatelliteResourceLanguages=zh-Hans `
+    -p:SatelliteResourceLanguages=en `
     -p:DebugType=None -p:DebugSymbols=false `
     -o $appDirectory
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
-$appExecutable = Join-Path $appDirectory '啾糯桌宠.exe'
+$appExecutable = Join-Path $appDirectory 'JiuNuoDesktopPet.exe'
 if (-not (Test-Path -LiteralPath $appExecutable -PathType Leaf)) {
     throw "The renamed runtime executable was not published: $appExecutable"
 }
 
 $vswhere = 'C:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe'
 $launcherProject = Join-Path $projectRoot 'launcher\NuonuoLauncher.vcxproj'
-$launcherName = if ($BehaviorControl) { '啾糯桌宠-行为控制版.exe' } else { '啾糯桌宠.exe' }
+$launcherName = if ($BehaviorControl) { 'JiuNuoDesktopPet-BehaviorControl.exe' } else { 'JiuNuoDesktopPet.exe' }
 $cachedLauncher = if ($BehaviorControl) {
-    Join-Path $projectRoot 'launcher\bin\Release\x64\BehaviorControl\啾糯桌宠-行为控制版.exe'
-} else { Join-Path $projectRoot 'launcher\bin\Release\x64\啾糯桌宠.exe' }
+    Join-Path $projectRoot 'launcher\bin\Release\x64\BehaviorControl\JiuNuoDesktopPet-BehaviorControl.exe'
+} else { Join-Path $projectRoot 'launcher\bin\Release\x64\JiuNuoDesktopPet.exe' }
 $packageLauncher = Join-Path $stagingDirectory $launcherName
 $launcherSources = @(
     $launcherProject,
@@ -92,14 +92,14 @@ if (-not (Test-Path -LiteralPath $packageLauncher)) {
     throw "Portable launcher was not produced: $packageLauncher"
 }
 
-$instructions = if ($BehaviorControl) { 'packaging\行为控制版使用说明.txt' } else { 'packaging\便携版使用说明.txt' }
+$instructions = if ($BehaviorControl) { 'packaging\behavior-control-instructions.txt' } else { 'packaging\portable-instructions.txt' }
 Copy-Item -LiteralPath (Join-Path $projectRoot $instructions) `
-    -Destination (Join-Path $stagingDirectory '使用说明.txt')
+    -Destination (Join-Path $stagingDirectory 'README.txt')
 
 & (Join-Path $projectRoot 'tools\copy_distribution_notices.ps1') -Destination $stagingDirectory
 
 $requiredRuntimeFiles = @('hostfxr.dll', 'coreclr.dll', 'PresentationFramework.dll',
-    '啾糯桌宠.dll', '啾糯桌宠.deps.json', '啾糯桌宠.runtimeconfig.json')
+    'JiuNuoDesktopPet.dll', 'JiuNuoDesktopPet.deps.json', 'JiuNuoDesktopPet.runtimeconfig.json')
 foreach ($requiredRuntimeFile in $requiredRuntimeFiles) {
     if (-not (Test-Path -LiteralPath (Join-Path $appDirectory $requiredRuntimeFile) -PathType Leaf)) {
         throw "Missing self-contained runtime file: $requiredRuntimeFile"
@@ -111,7 +111,7 @@ Compress-Archive -LiteralPath $stagingDirectory -DestinationPath $stagingArchive
 
 # Preserve the previous release until both the new folder and archive are complete.
 $previousRelease = [System.IO.Path]::GetFullPath((Join-Path $distRoot (
-    '旧版归档\' + (Get-Date -Format 'yyyyMMdd-HHmmss') + '-' + $packageName)))
+    'previous-releases\' + (Get-Date -Format 'yyyyMMdd-HHmmss') + '-' + $packageName)))
 if (-not $previousRelease.StartsWith($distPrefix, [System.StringComparison]::OrdinalIgnoreCase)) {
     throw "Invalid previous-release directory: $previousRelease"
 }

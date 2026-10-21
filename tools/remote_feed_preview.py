@@ -4,7 +4,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
 ROOT=Path(__file__).resolve().parents[1]
-OUT=ROOT/'dist/双宠互动演示'
+OUT=ROOT/'dist/pair-interaction-demo'
 FONT=ImageFont.truetype('C:/Windows/Fonts/msyh.ttc',22)
 cache={}
 
@@ -37,9 +37,9 @@ def main():
                 prop=treat.resize((size,size),Image.Resampling.LANCZOS).rotate(frame['spin'],resample=Image.Resampling.BICUBIC,expand=True)
                 image.alpha_composite(prop,(round(frame['x']-prop.width/2),round(frame['y']-prop.height/2)))
             frames.append(image.convert('RGB'))
-        target=OUT/f'原地抛食-{file.stem}.gif'
+        target=OUT/f'treat-toss-in-place-{file.stem}.gif'
         frames[0].save(target,save_all=True,append_images=frames[1:],duration=[33]*len(frames),loop=0)
-        frames[round(trace['arrival']*30)-2].save(OUT/f'原地抛食-{file.stem}-catch.png')
+        frames[round(trace['arrival']*30)-2].save(OUT/f'treat-toss-in-place-{file.stem}-catch.png')
         print(target)
 
 if __name__=='__main__':main()

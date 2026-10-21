@@ -4,12 +4,12 @@ $dotnet = if ($env:DOTNET_EXE) { $env:DOTNET_EXE } else { 'dotnet' }
 $python = if ($env:PYTHON_EXE) { $env:PYTHON_EXE } else { 'python' }
 & $python (Join-Path $projectRoot 'tools\public_privacy.py')
 if ($LASTEXITCODE -ne 0) { throw 'Privacy or license integrity check failed.' }
-$output = Join-Path $projectRoot 'dist\啾糯桌宠'
+$output = Join-Path $projectRoot 'dist\JiuNuoDesktopPet'
 
 & $dotnet publish (Join-Path $projectRoot 'src\SoftMochiPet\SoftMochiPet.csproj') `
     -c Release -r win-x64 --self-contained true `
     -p:PublishSingleFile=false `
-    -p:SatelliteResourceLanguages=zh-Hans `
+    -p:SatelliteResourceLanguages=en `
     -p:DebugType=None -p:DebugSymbols=false -o $output
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 

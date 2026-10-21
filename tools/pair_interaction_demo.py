@@ -10,7 +10,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "dist" / "双宠互动演示"
+OUT = ROOT / "dist" / "pair-interaction-demo"
 NUONUO = ROOT / "assets" / "sprites" / "runtime"
 FEIBI = ROOT / "assets" / "characters" / "feibijiubi" / "runtime"
 PROPS = ROOT / "assets" / "pair_interactions" / "props"
@@ -150,17 +150,17 @@ def main():
         for col, snapshot in enumerate(snapshots):
             storyboard.paste(scene_frame(kind, snapshot), (col*W, row*H))
         print(target)
-    target = OUT / "三段互动分镜.png"
+    target = OUT / "three-interaction-storyboard.png"
     storyboard.save(target, optimize=True)
     print(target)
     feed_moments = (2.1, 2.95, 3.75, 4.48, 5.0, 5.51, 6.15, 6.95)
     feed_board = Image.new("RGB", (W*4, H*2), "#FFFFFF")
     for index, moment in enumerate(feed_moments):
         feed_board.paste(scene_frame("feed", moment), ((index%4)*W, (index//4)*H))
-    target = OUT / "投喂八格分镜.png"
+    target = OUT / "feeding-eight-panel-storyboard.png"
     feed_board.save(target, optimize=True)
     print(target)
-    target = OUT / "投喂接食瞬间.png"
+    target = OUT / "feeding-catch-moment.png"
     scene_frame("feed", 5.51).save(target, optimize=True)
     print(target)
 

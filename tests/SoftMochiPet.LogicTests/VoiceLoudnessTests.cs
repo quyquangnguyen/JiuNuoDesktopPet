@@ -31,12 +31,12 @@ internal static class VoiceLoudnessTests
         const BindingFlags flags = BindingFlags.NonPublic | BindingFlags.Instance;
         var profile = PetCharacterProfile.FeibiJiubi;
         using var voice = new VoicePlaybackService("", false, .72, profile);
-        typeof(VoicePlaybackService).GetField("_currentFileName", flags)!.SetValue(voice, "菲比啾比_014.wav");
+        typeof(VoicePlaybackService).GetField("_currentFileName", flags)!.SetValue(voice, "feibijiubi_014.wav");
         var burst = new MediaPlayer();
         typeof(VoicePlaybackService).GetField("_burstPlayer", flags)!.SetValue(voice, burst);
         voice.SetVolume(.4);
         var main = (MediaPlayer)typeof(VoicePlaybackService).GetField("_player", flags)!.GetValue(voice)!;
-        Assert(Math.Abs(main.Volume - .4 * VoiceLoudness.Packaged.Gain(profile.Id, "菲比啾比_014.wav")) < 1e-8,
+        Assert(Math.Abs(main.Volume - .4 * VoiceLoudness.Packaged.Gain(profile.Id, "feibijiubi_014.wav")) < 1e-8,
             "The slider must not reset a balanced ordinary recording to raw volume.");
         Assert(Math.Abs(burst.Volume - .4 * VoiceLoudness.Packaged.Gain(profile.Id, FeibiVoiceCatalog.BurstCallFileName)) < 1e-8,
             "The independent burst player must use the same gain rule.");

@@ -34,7 +34,7 @@ dotnet restore .\SoftMochiPet.sln
 .\run.ps1
 ```
 
-`run.ps1` 先构建当前源码的 Release x64 配置，再启动对应 EXE；不会误启动 `dist` 中未更新的旧发行版。正式免安装目录需单独运行其根目录 `啾糯桌宠.exe`。
+`run.ps1` 先构建当前源码的 Release x64 配置，再启动对应 EXE；不会误启动 `dist` 中未更新的旧发行版。正式免安装目录需单独运行其根目录 `JiuNuoDesktopPet.exe`。
 
 ### 构建
 
@@ -62,7 +62,7 @@ dotnet run --project .\tests\SoftMochiPet.LogicTests\SoftMochiPet.LogicTests.csp
 .\publish.ps1
 ```
 
-输出到 `dist\啾糯桌宠`，主程序为 `啾糯桌宠.exe`。这是 Windows x64 自包含目录，包含 .NET 运行时，不要求目标电脑预装 .NET。
+输出到 `dist\JiuNuoDesktopPet`，主程序为 `JiuNuoDesktopPet.exe`。这是 Windows x64 自包含目录，包含 .NET 运行时，不要求目标电脑预装 .NET。
 
 ### 生成免安装包
 
@@ -72,16 +72,16 @@ dotnet run --project .\tests\SoftMochiPet.LogicTests\SoftMochiPet.LogicTests.csp
 
 脚本会：
 
-1. 将自包含 WPF 主程序发布到 `程序文件` 子目录；
-2. 编译根目录唯一正常入口 `啾糯桌宠.exe`；
+1. 将自包含 WPF 主程序发布到 `app` 子目录；
+2. 编译根目录唯一正常入口 `JiuNuoDesktopPet.exe`；
 3. 复制对应版本使用说明、代码许可、素材权利记录与第三方声明；
-4. 生成不含测试工具的文件夹和 ZIP 两种正式产物。
+4. 生成不含test-tools的文件夹和 ZIP 两种正式产物。
 
 输出路径：
 
 ```text
-dist\啾糯桌宠-免安装版\
-dist\啾糯桌宠-免安装版.zip
+dist\JiuNuoDesktopPet-Portable\
+dist\JiuNuoDesktopPet-Portable.zip
 ```
 
 若未安装 Visual C++ 工具链，脚本只在所选模式的缓存启动器存在、且时间戳不早于启动器源码和程序资源时复用缓存。专属测试入口仍可在开发构建中使用独立的 `FeatureTest` 编译中间目录，但不会进入正式包。全新克隆的仓库通常没有这些缓存，因此需要 Visual C++ Build Tools 或显式配置 LLVM-MinGW。
@@ -144,7 +144,7 @@ tmp/
 
 `.github/workflows/verify.yml` 在 Windows 2022 上执行构建、无界面测试、隐私与凭据扫描，以及完整打包校验；不上传或公开发行包。使用 [actions/checkout](https://github.com/actions/checkout) v6、[actions/setup-dotnet](https://github.com/actions/setup-dotnet) v5 和 [actions/setup-python](https://github.com/actions/setup-python) v6（均为 MIT），固定提交见工作流。图像工具使用 [Pillow 12.3.0](https://pypi.org/project/pillow/12.3.0/)（MIT-CMU），凭据扫描使用 [Gitleaks 8.30.1](https://github.com/gitleaks/gitleaks/releases/tag/v8.30.1)（MIT，下载校验值固定于工作流）。这些工具未经本地修改，不随桌宠发行。许可证原文用 `.gitattributes` 保留原始字节，以免不同 Git 换行设置破坏来源哈希。
 
-`package.ps1` 使用 `dist/.package-<唯一编号>` 暂存自包含运行目录和 ZIP，调用 `tools/verify_portable_package.ps1` 核对 x64 GUI 入口、启动器/主程序版本、内置 .NET/WPF、角色帧完整性、源素材哈希及 ZIP 全文件哈希，成功后才把旧正式包移入 `dist/旧版归档` 并替换正式路径。编译或校验失败时原正式包保留；暂存目录用于排查。这个流程只服务当前免安装发布，由项目维护者随角色素材契约维护帧目录数量。行为控制版仅在明确传入对应参数时更新。
+`package.ps1` 使用 `dist/.package-<唯一编号>` 暂存自包含运行目录和 ZIP，调用 `tools/verify_portable_package.ps1` 核对 x64 GUI 入口、启动器/主程序版本、内置 .NET/WPF、角色帧完整性、源素材哈希及 ZIP 全文件哈希，成功后才把旧正式包移入 `dist/previous-releases` 并替换正式路径。编译或校验失败时原正式包保留；暂存目录用于排查。这个流程只服务当前免安装发布，由项目维护者随角色素材契约维护帧目录数量。行为控制版仅在明确传入对应参数时更新。
 
 在准备可分发版本前：
 

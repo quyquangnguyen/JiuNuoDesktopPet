@@ -349,7 +349,7 @@ public sealed class SpriteAnimator
     {
         if (!File.Exists(path))
         {
-            throw new FileNotFoundException("缺少桌宠序列帧。", path);
+            throw new FileNotFoundException("A desktop pet sprite frame is missing.", path);
         }
 
         var bitmap = new BitmapImage();

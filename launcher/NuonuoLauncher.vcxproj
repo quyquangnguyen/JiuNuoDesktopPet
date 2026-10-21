@@ -24,12 +24,12 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(ProjectDir)bin\$(Configuration)\$(Platform)\</OutDir>
     <IntDir>$(ProjectDir)obj\$(Configuration)\$(Platform)\</IntDir>
-    <TargetName>啾糯桌宠</TargetName>
+    <TargetName>JiuNuoDesktopPet</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(FeatureTestLauncher)'=='true'">
     <OutDir>$(ProjectDir)bin\$(Configuration)\$(Platform)\FeatureTest\</OutDir>
     <IntDir>$(ProjectDir)obj\$(Configuration)\$(Platform)\FeatureTest\</IntDir>
-    <TargetName>菲比啾比专属功能测试</TargetName>
+    <TargetName>FeibiJiubi-FeatureTest</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -57,7 +57,7 @@
   <PropertyGroup Condition="'$(BehaviorControlLauncher)'=='true'">
     <OutDir>$(ProjectDir)bin\$(Configuration)\$(Platform)\BehaviorControl\</OutDir>
     <IntDir>$(ProjectDir)obj\$(Configuration)\$(Platform)\BehaviorControl\</IntDir>
-    <TargetName>啾糯桌宠-行为控制版</TargetName>
+    <TargetName>JiuNuoDesktopPet-BehaviorControl</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(BehaviorControlLauncher)'=='true'">
     <ClCompile>

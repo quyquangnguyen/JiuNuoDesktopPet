@@ -55,6 +55,6 @@
 
 ## 预览与用户实测
 
-揪脸与靠睡的离线素材预览使用 `tools/pair_interaction_demo.py`。当前投喂预览先用后台逻辑测试的 `--feed-preview` 导出生产 `PairFeedFlight` 与 `SpriteAnimator` 轨迹，再用 `tools/remote_feed_preview.py` 合成 `dist/双宠互动演示/原地抛食-long.gif` 与 `原地抛食-reverse-height.gif`，分别检查远距离、左右对换和高低差。旧固定站位投喂预览不再代表当前行为。所有预览不启动桌宠、不打开窗口、不播放声音；真实显示器 DPI、窗口层级和手动中断仍须用户确认。
+揪脸与靠睡的离线素材预览使用 `tools/pair_interaction_demo.py`。当前投喂预览先用后台逻辑测试的 `--feed-preview` 导出生产 `PairFeedFlight` 与 `SpriteAnimator` 轨迹，再用 `tools/remote_feed_preview.py` 合成 `dist/pair-interaction-demo/treat-toss-in-place-long.gif` 与 `treat-toss-in-place-reverse-height.gif`，分别检查远距离、左右对换和高低差。旧固定站位投喂预览不再代表当前行为。所有预览不启动桌宠、不打开窗口、不播放声音；真实显示器 DPI、窗口层级和手动中断仍须用户确认。
 
 用户自行运行当前源码后开启“双宠共存”，右键两人任意一位依次选择“双人互动演示”的三项。观察：揪脸时手与脸能否接触；睡觉时两人是否靠拢且头顶、脚不缺失；投喂时菲比是否完全摘帽、食物从帽内出现后飞过明显距离、糯糯是否在抵达前张大嘴以及菲比是否戴回帽子。重复投喂确认四种随机食物。分别在安静模式、拖拽中断、双宠关闭和不同缩放显示器上检查是否恢复正常待机。如有异常，反馈 `%LOCALAPPDATA%/SoftMochiPet/` 下最近的诊断日志时间段即可定位。

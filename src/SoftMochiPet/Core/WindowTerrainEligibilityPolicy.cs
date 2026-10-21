@@ -13,6 +13,8 @@ public static class WindowTerrainEligibilityPolicy
     public const long WsCaption = 0x00C00000L;
     public const long WsPopup = unchecked((long)0x80000000);
 
+    // The Chinese entries match the localized (Simplified Chinese) titles of capture
+    // tools and of "Windows Input Experience"; they are runtime data, not UI text.
     private static readonly string[] CaptureIdentityFragments =
     [
         "录屏",
